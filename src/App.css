@@ -1,10 +1,10 @@
 :root {
-  --primary-clor: #87d551;
+  --primary-color: #87d551;
 }
 
 nav a {
-  padding: 0.25rem 0.8rem;
   border-radius: 0.5rem;
+  padding: 0.25rem 0.8rem;
 }
 
 nav a:hover {
@@ -14,6 +14,21 @@ nav a:hover {
 
 nav a.active {
   background: white;
+}
+
+button {
+  color: white;
+  background: var(--primary-color);
+  border-radius: 0.5rem;
+  font-weight: bold;
+  padding: 0.25rem 0.8rem;
+}
+
+input {
+  color: var(--primary-color);
+}
+select {
+  color: var(--primary-color);
 }
 
 .background {
