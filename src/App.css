@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #87d551;
+  --color: #87d551;
 }
 
 nav a {
@@ -16,12 +16,53 @@ nav a.active {
   background: white;
 }
 
+/* From Uiverse.io by cssbuttons-io */ 
 button {
-  color: white;
-  background: var(--primary-color);
-  border-radius: 0.5rem;
-  font-weight: bold;
-  padding: 0.25rem 0.8rem;
+  font-family: inherit;
+  display: inline-block;
+  width: 8em;
+  height: 2.6em;
+  line-height: 2.5em;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+button:hover {
+  color: #fff;
+}
+
+button:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+button:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+button:active:before {
+  background: #19a30c;
+  transition: background 0s;
 }
 
 input {
@@ -31,8 +72,8 @@ select {
   color: var(--primary-color);
 }
 
-.background {
-  background-image: url("src/components/assets/temp.jpg");
+.backgrounds {
+  background-image: url("src/assets/temp.jpg");
   background-size: cover;
   background-position: "bottom";
 }

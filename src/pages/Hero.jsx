@@ -3,8 +3,8 @@ import React from "react";
 function Hero() {
   return (
     <div
-      id="Home"
-      className="flex p-10 justify-center items-center w-screen h-screen background"
+      id="Hero"
+      className="flex p-10 justify-center items-center w-screen h-screen backgrounds"
     >
       <div className="bg-white rounded-lg px-10 py-5 flex justify-evenly gap-10">
         <div>

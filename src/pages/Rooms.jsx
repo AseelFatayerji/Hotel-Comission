@@ -6,9 +6,10 @@ function Room() {
     { id: 1, img: "src/assets/temp-room.jpg", name: "Room Name" },
     { id: 2, img: "src/assets/temp-room.jpg", name: "Room Name" },
     { id: 3, img: "src/assets/temp-room.jpg", name: "Room Name" },
+    { id: 4, img: "src/assets/temp-room.jpg", name: "Room Name" },
   ];
   return (
-    <div id="Rooms" className="w-screen h-fit rounded-t-3xl">
+    <div id="Rooms" className="w-screen h-fit bg-white rounded-t-3xl flex justify-evenly gap-10 -mt-10 p-10">
       {rooms.map((room) => {
         return (
           <div key={room.id}>
