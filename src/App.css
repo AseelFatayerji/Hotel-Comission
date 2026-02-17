@@ -15,3 +15,9 @@ nav a:hover {
 nav a.active {
   background: white;
 }
+
+.background {
+  background-image: url("src/components/assets/temp.jpg");
+  background-size: cover;
+  background-position: "bottom";
+}
