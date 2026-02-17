@@ -1,0 +1,17 @@
+:root {
+  --primary-clor: #87d551;
+}
+
+nav a {
+  padding: 0.25rem 0.8rem;
+  border-radius: 0.5rem;
+}
+
+nav a:hover {
+  color: white;
+  background: #87d551;
+}
+
+nav a.active {
+  background: white;
+}
