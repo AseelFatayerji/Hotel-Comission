@@ -2,9 +2,12 @@ import React from "react";
 
 function Hero() {
   return (
-    <div id="Hero" className="w-screen h-screen backgrounds ">
-      <div className="bg-black/30 w-full h-full  justify-center items-center p-10 flex">
-        <div className="bg-white rounded-lg px-10 py-5 flex justify-evenly gap-10">
+    <div id="Hero" className="backgrounds ">
+      <div className="bg-black/30 w-screen h-screen justify-center items-center p-10 flex flex-col space-y-10">
+        <div className="text-white text-8xl font-bold text-center">
+          Land Of Peace <br /> LOP Inn
+        </div>
+        <div className="bg-white rounded-lg px-10 py-5 flex justify-evenly gap-10 w-fit text-left">
           <div>
             Check Out <br /> <input type="date" alt="check out date" />
           </div>
