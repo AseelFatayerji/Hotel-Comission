@@ -16,23 +16,20 @@ nav a.active {
   background: white;
 }
 
-/* From Uiverse.io by cssbuttons-io */ 
+/* From Uiverse.io by cssbuttons-io */
 button {
   font-family: inherit;
   display: inline-block;
-  width: 8em;
-  height: 2.6em;
-  line-height: 2.5em;
+  padding: 0.3rem;
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  border: 2px solid var(--color);
   transition: color 0.5s;
   z-index: 1;
-  font-size: 17px;
-  border-radius: 6px;
+  border-radius: 50%;
   font-weight: 500;
-  color: var(--color);
+  color: black;
+  background-color: white;
 }
 
 button:before {
