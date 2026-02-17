@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
 
 function Contact() {
   return (
-    <div id="Contact" className='w-screen h-[70vh] bg-[#3B5388]'>
+    <div
+      id="Contact"
+      className="w-screen h-[70vh] bg-[#3B5388] rounded-t-[50px]"
+    >
       Contact
     </div>
-  )
+  );
 }
 
-export default Contact
+export default Contact;
