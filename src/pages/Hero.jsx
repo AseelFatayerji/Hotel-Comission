@@ -7,7 +7,7 @@ function Hero() {
         <div className="text-white text-8xl font-bold text-center">
           Land Of Peace <br /> LOP Inn
         </div>
-        <div className="bg-white rounded-lg px-10 py-5 flex justify-evenly gap-10 w-fit text-left Poppins">
+        <div className="bg-white rounded-2xl px-20 py-5 flex justify-evenly gap-10 w-fit text-left Poppins text-xl">
           <div>
             Check Out <br /> <input type="date" alt="check out date" />
           </div>
@@ -27,7 +27,7 @@ function Hero() {
           </div>
           <div>
             Guests <br />
-            <input type="number" alt="number of guests" defaultValue={0} />
+            <input type="number" alt="number of guests" defaultValue={0} className="w-20"/>
           </div>
           <button className="rounded-lg border-2 border-[#87d551]">
             Book Now
