@@ -7,7 +7,7 @@ function Hero() {
         <div className="text-white text-8xl font-bold text-center">
           Land Of Peace <br /> LOP Inn
         </div>
-        <div className="bg-white rounded-lg px-10 py-5 flex justify-evenly gap-10 w-fit text-left">
+        <div className="bg-white rounded-lg px-10 py-5 flex justify-evenly gap-10 w-fit text-left Poppins">
           <div>
             Check Out <br /> <input type="date" alt="check out date" />
           </div>

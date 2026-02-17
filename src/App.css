@@ -1,10 +1,18 @@
 :root {
   --color: #87d551;
 }
-
+body {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 nav a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
   border-radius: 0.5rem;
   padding: 0.25rem 0.8rem;
+  letter-spacing: 1.5px;
 }
 
 nav a:hover {
@@ -14,6 +22,12 @@ nav a:hover {
 
 nav a.active {
   background: white;
+}
+
+.Poppins {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 /* From Uiverse.io by cssbuttons-io */
@@ -73,4 +87,3 @@ select {
   background-size: cover;
   background-position: "bottom";
 }
-

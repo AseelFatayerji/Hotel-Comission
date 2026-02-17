@@ -16,7 +16,7 @@ function Room() {
       <label className="flex text-6xl w-full gap-5 justify-center p-5">
         Random <l className="text-[#87d551] underline">Insprational</l> Quote
       </label>
-      <div className="flex justify-evenly gap-10">
+      <div className="flex justify-evenly gap-10 Poppins">
         {rooms.map((room) => {
           return (
             <div key={room.id}>
