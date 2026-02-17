@@ -1,4 +1,3 @@
-import React from "react";
 import RoomCard from "../components/Room_Card";
 
 function Room() {
@@ -14,7 +13,7 @@ function Room() {
       className="w-screen h-fit bg-white rounded-t-[3rem] space-y-5 -mt-15 p-5"
     >
       <label className="flex text-6xl w-full gap-5 justify-center p-5">
-        Random <l className="text-[#87d551] underline">Insprational</l> Quote
+        Random <b className="text-[#87d551] underline">Insprational</b> Quote
       </label>
       <div className="flex justify-evenly gap-10 Poppins">
         {rooms.map((room) => {

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div>
+    <div className='w-screen h-[25vh]'>
       Footer
     </div>
   )
