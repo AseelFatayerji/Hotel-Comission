@@ -11,47 +11,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 function MainPage() {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=50%",
-          scrub: true,
-          pin: ".section1",
-          pinSpacing: true,
-        },
-      });
-
-      tl.fromTo(".section2", { y: "100%" }, { y: "0%" })
-
-        .fromTo(".section3", { x: "100%" }, { x: "0%" })
-
-        .fromTo(".section4", { y: "100%" }, { y: "0%" });
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <>
       <Navbar />
-      <div ref={containerRef}>
-        <div className="section1">
-          <Hero />
-        </div>
-
-        <div className="section2 z-1 -mt-260">
+      <div className="section1">
+        <Hero />
+      </div>
+      <div className="cover-wrapper bg-white rounded-t-[3rem] -mt-[15vh]">
+        <div className="section2 z-1">
           <Room />
         </div>
-
-        <div className="section3z-2">
+        <div className="section3 z-2 overflow-hidden">
           <Testimonials />
         </div>
-
         <div className="section4 z-3">
           <Contact />
           <Footer />
