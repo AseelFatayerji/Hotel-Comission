@@ -18,7 +18,7 @@ function Testimonial_Card({ rating, name, review, img }) {
   }
 
   return (
-    <div className="flex flex-col py-2 px-5 border-2 border-[#B4B4B4] bg-neutral-100 rounded-2xl shrink-0 w-[20rem]">
+    <div className="flex flex-col py-2 px-5 border-2 border-[#B4B4B4] bg-neutral-100 rounded-2xl shrink-0 grow-0 basis-0.6 w-[20rem] Poppins">
       <div className="text-[#87d551] gap-2 flex py-3 text-xl">
         {stars.map((star, index) => {
           return <FontAwesomeIcon icon={star} key={index} />;

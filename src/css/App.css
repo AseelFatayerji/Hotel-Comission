@@ -121,7 +121,12 @@ select {
   display: none;
 }
 .group {
-  animation: spin;
+  align-content: center;
+  animation: spin 20s infinite linear;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding-right: 1rem;
 }
 @keyframes spin {
   from {

@@ -57,18 +57,33 @@ function Testimonials() {
       <label className="flex text-6xl w-full gap-5 justify-center p-5">
         What Our <b className="text-[#87d551] underline">Guests</b> Say?
       </label>
-      <div className="flex justify-evenly overflow-x-auto gap-4 p-4">
-        {tempData.map((reviews, index) => {
-          return (
-            <Testimonial_Card
-              key={index}
-              name={reviews.name}
-              rating={reviews.rating}
-              img={reviews.img}
-              review={reviews.review}
-            />
-          );
-        })}
+      <div className="flex px-4 py-16 overflow-x-auto carousel">
+        <div className="group">
+          {tempData.map((reviews, index) => {
+            return (
+              <Testimonial_Card
+                key={index}
+                name={reviews.name}
+                rating={reviews.rating}
+                img={reviews.img}
+                review={reviews.review}
+              />
+            );
+          })}
+        </div>
+        <div aria-hidden className="group">
+          {tempData.map((reviews, index) => {
+            return (
+              <Testimonial_Card
+                key={index}
+                name={reviews.name}
+                rating={reviews.rating}
+                img={reviews.img}
+                review={reviews.review}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
