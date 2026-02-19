@@ -9,16 +9,17 @@ function Hero() {
         </div>
         <div className="bg-white rounded-2xl px-20 py-5 flex justify-evenly gap-10 w-fit text-left Poppins text-xl">
           <div>
-            Check Out <br /> <input type="date" alt="check out date" />
+            Check Out <br />{" "}
+            <input type="date" className="text-sm" alt="check out date" />
           </div>
           <div>
             Check In
-            <br /> <input type="date" alt="check in date" />
+            <br /> <input type="date" className="text-sm" alt="check in date" />
           </div>
           <div>
             Room Type
             <br />
-            <select>
+            <select className="text-sm">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -27,9 +28,14 @@ function Hero() {
           </div>
           <div>
             Guests <br />
-            <input type="number" alt="number of guests" defaultValue={0} className="w-20"/>
+            <input
+              type="number"
+              alt="number of guests"
+              defaultValue={0}
+              className="w-20 text-sm"
+            />
           </div>
-          <button className="rounded-lg border-2 border-[#87d551]">
+          <button className="rounded-lg border-2 py-1.5 px-6 border-[#87d551]">
             Book Now
           </button>
         </div>

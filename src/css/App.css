@@ -55,7 +55,6 @@ select:active {
 button {
   font-family: inherit;
   display: i5nline-block;
-  padding: 0.5rem 1.5rem;
   position: relative;
   cursor: pointer;
   overflow: hidden;

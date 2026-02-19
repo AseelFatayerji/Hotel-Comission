@@ -218,7 +218,7 @@ function Booking() {
                   <br /> <input type="date" alt="check in date" />
                 </div>
               </div>
-              <button className="w-fit text-3xl rounded-lg border-2 border-[#87d551]">
+              <button className="w-fit px-6 py-2 self-center text-3xl rounded-lg border-2 border-[#87d551]">
                 Book Now
               </button>
             </form>

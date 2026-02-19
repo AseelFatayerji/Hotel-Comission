@@ -18,7 +18,7 @@ function RoomCard({ img, name }) {
         <div className="font-medium bg-white rounded-full px-5 py-1 text-center justify-center">
           {name}
         </div>
-        <button className="text-center rounded-full" onClick={handleClick}>
+        <button className="text-center p-1.5 rounded-full" onClick={handleClick}>
           <FontAwesomeIcon icon={faArrowUp} className="rotate-45" />
         </button>
       </div>
