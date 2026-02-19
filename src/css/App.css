@@ -116,7 +116,10 @@ select {
   position: relative;
   width: 100%;
 }
-
+.carousel {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
 .carousel::-webkit-scrollbar {
   display: none;
 }
