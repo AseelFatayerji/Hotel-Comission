@@ -1,4 +1,4 @@
-import "./App.css";
+import "./css/App.css";
 import Booking from "./pages/Booking";
 import MainPage from "./pages/MainPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
