@@ -25,7 +25,7 @@ function Testimonial_Card({ rating, name, review, img }) {
         })}
       </div>
       <div className="text-sm">{review}</div>
-      <div className="w-full border-t  border-[#B4B4B4] my-4"></div>
+      <div className="w-full border-t  border-[#B4B4B4] my-4"/>
       <div className="flex gap-5 text-lg items-center py-2">
         <img
           src={img}

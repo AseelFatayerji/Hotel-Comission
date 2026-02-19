@@ -1,11 +1,12 @@
 import RoomCard from "../components/Room_Card";
+import temp from "../assets/temp-room.jpg";
 
 function Room() {
   const rooms = [
-    { id: 1, img: "src/assets/temp-room.jpg", name: "Room Name1" },
-    { id: 2, img: "src/assets/temp-room.jpg", name: "Room Name2" },
-    { id: 3, img: "src/assets/temp-room.jpg", name: "Room Name3" },
-    { id: 4, img: "src/assets/temp-room.jpg", name: "Room Name4" },
+    { id: 1, img: temp, name: "Room Name1" },
+    { id: 2, img: temp, name: "Room Name2" },
+    { id: 3, img: temp, name: "Room Name3" },
+    { id: 4, img: temp, name: "Room Name4" },
   ];
   return (
     <div

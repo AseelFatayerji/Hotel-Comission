@@ -50,7 +50,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full border-t  border-gray-500 my-8"></div>
+      <div className="w-full border-t  border-gray-500 my-8"/>
       <div className="text-center text-white">
         © 2026 Land Of Peace - All rights reserved.
       </div>
