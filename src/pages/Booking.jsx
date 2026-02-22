@@ -78,11 +78,11 @@ function Booking() {
   return (
     <>
       <Navbar />
-      <div className=" flex justify-around h-screen w-screen bg-[#F9FAFB] p-5">
+      <div className="flex justify-around h-screen w-screen bg-[#F9FAFB] p-5">
         <div className=" w-[50%]">
           <img src={img} className="rounded-3xl h-full w-full" />
         </div>
-        <div className="scroll-auto h-fit  w-[40%] flex flex-col gap-10">
+        <div className="h-full w-[40%] flex flex-col gap-10 overflow-y-auto pr-2">
           <div className="px-10 py-15 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] Poppins">
             <div className="py-4">
               <FontAwesomeIcon icon={faStar} className="text-[#87d551]" /> 4.8
