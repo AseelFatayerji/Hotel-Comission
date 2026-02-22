@@ -9,7 +9,7 @@ function Hero() {
         </div>
         <div className="bg-white rounded-2xl px-15 py-10 flex justify-evenly gap-10 w-fit text-left Poppins text-xl">
           <div>
-            Check Out <br />{" "}
+            Check Out <br />
             <input type="date" className="text-sm" alt="check out date" />
           </div>
           <div>

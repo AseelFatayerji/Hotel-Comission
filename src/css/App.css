@@ -40,6 +40,14 @@ input:hover {
 input:active {
   opacity: 100%;
 }
+
+input[type="date"] {
+  color-scheme: dark;
+}
+input::-webkit-calendar-picker-indicator {
+  filter: invert(65%) sepia(82%) saturate(397%) hue-rotate(52deg);
+}
+
 select {
   cursor: pointer;
   opacity: 50%;
@@ -116,7 +124,7 @@ select {
   width: 100%;
 }
 .carousel {
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .carousel::-webkit-scrollbar {
