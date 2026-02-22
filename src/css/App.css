@@ -60,7 +60,7 @@ select:active {
 }
 
 /* From Uiverse.io by cssbuttons-io */
-button {
+.custom-button {
   font-family: inherit;
   display: i5nline-block;
   position: relative;
@@ -73,7 +73,7 @@ button {
   background-color: white;
 }
 
-button:before {
+.custom-button:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -83,22 +83,22 @@ button:before {
   border-radius: 50%;
 }
 
-button:hover {
+.custom-button:hover {
   color: #fff;
 }
 
-button:before {
+.custom-button:before {
   top: 100%;
   left: 100%;
   transition: all 0.7s;
 }
 
-button:hover:before {
+.custom-button:hover:before {
   top: -30px;
   left: -30px;
 }
 
-button:active:before {
+.custom-button:active:before {
   background: #19a30c;
   transition: background 0s;
 }
