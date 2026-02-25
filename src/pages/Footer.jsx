@@ -9,7 +9,6 @@ import { useMediaQuery } from "react-responsive";
 
 function Footer() {
   const isMobile = useMediaQuery({ query: "(max-width: 810px)" });
-  console.log(isMobile);
   return (
     <footer className="flex flex-col w-screen px-4 rounded-t-[20px] bg-[#87d551] text-neutral-200  -mt-25 Poppins md:px-14">
       <div className="flex flex-row pt-5">

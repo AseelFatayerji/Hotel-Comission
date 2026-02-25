@@ -1,8 +1,10 @@
 import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar as Empty } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useMediaQuery } from "react-responsive";
 
 function Testimonial_Card({ rating, name, review, img }) {
+  const isMobile = useMediaQuery({ query: "(max-width: 810px)" });
   const stars = [];
 
   const fullStars = Math.floor(rating);
@@ -18,14 +20,16 @@ function Testimonial_Card({ rating, name, review, img }) {
   }
 
   return (
-    <div className="flex flex-col py-2 px-5 border-2 border-[#B4B4B4] bg-neutral-100 rounded-2xl shrink-0 grow-0 basis-0.6 w-[20rem] Poppins scale-75 md:100">
+    <div
+      className={`flex flex-col py-2 px-5 border-2 border-[#B4B4B4] bg-neutral-100 rounded-2xl shrink-0 grow-0 basis-0.6 w-[20rem] Poppins ${isMobile && scale - 75}`}
+    >
       <div className="text-[#87d551] gap-2 flex py-3 text-xl">
         {stars.map((star, index) => {
           return <FontAwesomeIcon icon={star} key={index} />;
         })}
       </div>
       <div className="text-sm">{review}</div>
-      <div className="w-full border-t  border-[#B4B4B4] my-4"/>
+      <div className="w-full border-t  border-[#B4B4B4] my-4" />
       <div className="flex gap-5 text-lg items-center py-2">
         <img
           src={img}
