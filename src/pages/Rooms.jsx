@@ -11,12 +11,12 @@ function Room() {
   return (
     <div
       id="Rooms"
-      className="w-screen h-fit bg-white rounded-t-[3rem] space-y-5 -mt-15 p-5"
+      className="w-screen h-fit bg-white rounded-t-[3rem] p-5 space-y-5 mt-20 md:-mt-15 "
     >
-      <label className="flex text-6xl w-full gap-5 justify-center p-5">
-        Random <b className="text-[#87d551] underline">Insprational</b> Quote
+      <label className="flex w-full justify-center gap-1 p-5 text-3xl md:text-6xl md:gap-5">
+        Random <b className="text-[#87d551] underline"> Insprational </b> Quote
       </label>
-      <div className="flex justify-evenly gap-10 Poppins">
+      <div className="flex flex-col items-center Poppins gap-5 md:scale-100 md:justify-evenly md:gap-10 md:flex-row">
         {rooms.map((room) => {
           return (
             <div key={room.id}>
