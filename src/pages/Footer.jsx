@@ -5,19 +5,22 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 
 function Footer() {
+  const isMobile = useMediaQuery({ query: "(max-width: 810px)" });
+  console.log(isMobile);
   return (
-    <footer className="flex flex-col w-screen rounded-t-[20px] bg-[#87d551] text-neutral-200 px-14 -mt-25 Poppins">
+    <footer className="flex flex-col w-screen px-4 rounded-t-[20px] bg-[#87d551] text-neutral-200  -mt-25 Poppins md:px-14">
       <div className="flex flex-row pt-5">
-        <div className="flex flex-col gap-2 justify-start w-[35%]">
+        <div className="flex justify-start h-20 w-20 pr-3 md:w-[35%] md:h-30">
           <img alt="Land Of Peace Logo" src="src\assets\logo.png" width="80" />
         </div>
-        <div className="flex flex-row w-[65%] justify-end gap-16 text-nowrap">
-          <div className="grid grid-cols-3 gap-12">
+        <div className="flex flex-row w-[65%] justify-end gap-16 text-nowrap text-sm md:text-lg">
+          <div className="grid grid-cols-3 gap-16 md:gap-12">
             <div className="flex flex-col gap-2">
-              <div className="font-bold uppercase text-white pb-3">
-                Land Of Peace
+              <div className="font-bold uppercase text-white md:pb-3">
+                Land Of {isMobile && <br />} Peace
               </div>
               <a href="#Contact" className="hover:underline hover:text-white">
                 Contact
@@ -50,7 +53,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full border-t  border-gray-500 my-8"/>
+      <div className="w-full border-t  border-gray-500 my-8" />
       <div className="text-center text-white">
         © 2026 Land Of Peace - All rights reserved.
       </div>
