@@ -12,7 +12,7 @@ function Footer() {
   return (
     <footer className="flex flex-col w-screen px-4 rounded-t-[20px] bg-[#87d551] text-neutral-200  -mt-25 Poppins md:px-14">
       <div className="flex flex-row pt-5">
-        <div className="flex justify-start h-20 w-20 pr-3 md:w-[35%] md:h-30">
+        <div className="flex justify-start h-20 w-20 pr-3 md:w-[35%] ">
           <img alt="Land Of Peace Logo" src="src\assets\logo.png" width="80" />
         </div>
         <div className="flex flex-row w-[65%] justify-end gap-16 text-nowrap text-sm md:text-lg">
