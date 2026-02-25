@@ -54,10 +54,10 @@ function Testimonials() {
   ];
   return (
     <div className="w-screen bg-white mt-20">
-      <label className="flex text-6xl w-full gap-5 justify-center p-5">
+      <label className="flex text-3xl w-full gap-2 justify-center p-5  md:text-6xl md:gap-5 ">
         What Our <b className="text-[#87d551] underline">Guests</b> Say?
       </label>
-      <div className="flex px-4 py-16 overflow-x-auto carousel">
+      <div className="flex px-4 py-4 overflow-x-auto carousel md:py-16">
         <div className="group">
           {tempData.map((reviews, index) => {
             return (
