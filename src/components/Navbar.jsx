@@ -8,7 +8,7 @@ function Navbar() {
         <img src={logo} alt="Land Of Peace" className="w-15 h-15 md:w-20 md:h-20" />
       </div>
       <div className="bg-[#87d551]/60 backdrop-blur-sm  h-fit px-1 py-2 text-sm rounded-lg flex justify-evenly gap-1 font-bold md:text-lg md:px-4 md:gap-10">
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/#Hero">Home</NavLink>
         <NavLink to="/#Rooms">Rooms</NavLink>
         <NavLink to="/#Contact">Contact</NavLink>
       </div>
