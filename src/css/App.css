@@ -111,7 +111,7 @@ select {
 }
 
 .backgrounds {
-  background-image: url("src/assets/temp.jpg");
+  background-image: url("../assets/temp.jpg");
   background-size: cover;
   background-position: "bottom";
 }
