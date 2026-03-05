@@ -1,7 +1,12 @@
-import React from "react";
-import DatePicker from "react-datepicker";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+  const navigate = useNavigate();
+  const [name, setName] = useState("Room Name1");
+  const handleClick = () => {
+    navigate(`/Room/${name}`);
+  };
   return (
     <div id="Hero" className="backgrounds ">
       <div className="bg-black/30 w-screen h-fit py-20 px-10 flex flex-col items-center md:space-y-10 md:justify-center md:h-screen md:py-10">
@@ -20,11 +25,16 @@ function Hero() {
           <div>
             Room
             <br />
-            <select className="text-sm">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+            <select
+              className="text-sm"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            >
+              <option>Room Name1</option>
+              <option>Room Name2</option>
+              <option>Room Name3</option>
+              <option>Room Name4</option>
             </select>
           </div>
           <div>
@@ -36,7 +46,10 @@ function Hero() {
               className="w-20 text-sm"
             />
           </div>
-          <button className="rounded-lg border-2 py-1.5 px-6 border-[#87d551] custom-button text-lg md:text-xl">
+          <button
+            className="rounded-lg border-2 py-1.5 px-6 border-[#87d551] custom-button text-lg md:text-xl"
+            onClick={handleClick}
+          >
             Book Now
           </button>
         </div>

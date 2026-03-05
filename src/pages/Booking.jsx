@@ -79,7 +79,7 @@ function Booking() {
     <>
       <Navbar />
       <div className="flex justify-around h-screen w-screen bg-[#F9FAFB] p-5 flex-col gap-10 md:flex-row">
-        <div className="  md:w-[50%] md:h-auto">
+        <div className="  md:w-[55%] md:h-auto">
           <img src={img} className="rounded-3xl h-full w-full" />
         </div>
         <div className="h-full flex flex-col gap-10  pr-2 w-full md:w-[40%] md:overflow-y-auto">
