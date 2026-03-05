@@ -6,6 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useMediaQuery } from "react-responsive";
+import logo from "../assets/logo.png";
 
 function Footer() {
   const isMobile = useMediaQuery({ query: "(max-width: 810px)" });
@@ -13,7 +14,7 @@ function Footer() {
     <footer className="flex flex-col w-screen px-4 rounded-t-[20px] bg-[#87d551] text-neutral-200  -mt-5 Poppins md:px-14">
       <div className="flex flex-row pt-5">
         <div className="flex justify-start h-20 w-20 pr-3 md:w-[35%] ">
-          <img alt="Land Of Peace Logo" src="src\assets\logo.png" width="80" />
+          <img alt="Land Of Peace Logo" src={logo} width="80" />
         </div>
         <div className="flex flex-row w-[65%] justify-end gap-16 text-nowrap text-sm md:text-lg">
           <div className="grid grid-cols-3 gap-16 md:gap-12">

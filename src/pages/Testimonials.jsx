@@ -5,49 +5,49 @@ function Testimonials() {
     {
       rating: 4,
       name: "John Does",
-      img: "src/assets/dumby-data.jpg",
+      img: "../assets/dumby-data.jpg",
       review:
         "DUMBY TEXT INSERT HERE Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. ",
     },
     {
       rating: 5,
       name: "John Does",
-      img: "src/assets/dumby-data.jpg",
+      img: "../assets/dumby-data.jpg",
       review:
         "DUMBY TEXT INSERT HERE Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. ",
     },
     {
       rating: 3,
       name: "John Does",
-      img: "src/assets/dumby-data.jpg",
+      img: "../assets/dumby-data.jpg",
       review:
         "DUMBY TEXT INSERT HERE Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. ",
     },
     {
       rating: 2.5,
       name: "John Does",
-      img: "src/assets/dumby-data.jpg",
+      img: "../assets/dumby-data.jpg",
       review:
         "DUMBY TEXT INSERT HERE Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. ",
     },
     {
       rating: 3,
       name: "John Does",
-      img: "src/assets/dumby-data.jpg",
+      img: "../assets/dumby-data.jpg",
       review:
         "DUMBY TEXT INSERT HERE Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. ",
     },
     {
       rating: 5,
       name: "John Does",
-      img: "src/assets/dumby-data.jpg",
+      img: "../assets/dumby-data.jpg",
       review:
         "DUMBY TEXT INSERT HERE Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. ",
     },
     {
       rating: 4,
       name: "John Does",
-      img: "src/assets/dumby-data.jpg",
+      img: "../assets/dumby-data.jpg",
       review:
         "DUMBY TEXT INSERT HERE Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. ",
     },
