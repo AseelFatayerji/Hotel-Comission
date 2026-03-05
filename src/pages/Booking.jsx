@@ -83,7 +83,7 @@ function Booking() {
           <img src={img} className="rounded-3xl h-full w-full" />
         </div>
         <div className="h-full flex flex-col gap-10  pr-2 w-full md:w-[40%] md:overflow-y-auto">
-          <div className="px-3 py-15 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] Poppins md:px-10 md:py-10">
+          <div className="px-3 py-15 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] Poppins md:px-10a md:py-10">
             <div className="py-4">
               <FontAwesomeIcon icon={faStar} className="text-[#87d551]" /> 4.8
               (100 reviews)
