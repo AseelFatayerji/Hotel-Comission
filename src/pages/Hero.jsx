@@ -36,7 +36,7 @@ function Hero() {
               className="w-20 text-sm"
             />
           </div>
-          <button className="rounded-lg border-2 py-1.5 px-6 border-[#87d551]">
+          <button className="rounded-lg border-2 py-1.5 px-6 border-[#87d551] custom-button text-lg md:text-xl">
             Book Now
           </button>
         </div>
