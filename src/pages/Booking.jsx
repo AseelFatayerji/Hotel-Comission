@@ -83,7 +83,7 @@ function Booking() {
           <img src={img} className="rounded-3xl h-full w-full" />
         </div>
         <div className="h-full flex flex-col gap-10  pr-2 w-full md:w-[40%] md:overflow-y-auto">
-          <div className="px-3 py-15 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] Poppins md:py-10">
+          <div className="px-3 py-15 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] Poppins md:px-10 md:py-10">
             <div className="py-4">
               <FontAwesomeIcon icon={faStar} className="text-[#87d551]" /> 4.8
               (100 reviews)
@@ -150,7 +150,7 @@ function Booking() {
               <p className="text-pretty text-lg font-light md:text-xl">{disc}</p>
             </div>
           </div>
-          <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-5 md:py-15">
+          <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
             <label className="flex text-4xl w-full gap-2 justify-center p-5 md:text-6xl md:gap-5">
               Book Your <b className="text-[#87d551] underline">Stay</b>
             </label>
