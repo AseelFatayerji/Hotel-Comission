@@ -21,21 +21,21 @@ function Testimonial_Card({ rating, name, review, img }) {
 
   return (
     <div
-      className={`flex flex-col py-2 px-5 border-2 border-[#B4B4B4] bg-neutral-100 rounded-2xl shrink-0 grow-0 basis-0.6 w-[20rem] Poppins ${isMobile && scale - 75}`}
+      className={`flex flex-col py-2 px-5 border-2 border-[#B4B4B4] bg-neutral-100 rounded-2xl  Poppins ${isMobile ? "shrink grow w-[18rem]" : "shrink-0 grow-0 basis-0.6 w-[20rem]"}`}
     >
-      <div className="text-[#87d551] gap-2 flex py-3 text-xl">
+      <div className="text-[#87d551] gap-2 flex py-3 text-sm md:text-xl">
         {stars.map((star, index) => {
           return <FontAwesomeIcon icon={star} key={index} />;
         })}
       </div>
-      <div className="text-sm">{review}</div>
+      <div className="text-xs md:text-sm ">{review}</div>
       <div className="w-full border-t  border-[#B4B4B4] my-4" />
       <div className="flex gap-5 text-lg items-center py-2">
         <img
           src={img}
-          className="rounded-full border-4 border-[#87d551] h-15 w-15"
+          className="rounded-full border-4 border-[#87d551] h-10 w-10 md:h-15 md:w-15"
         />
-        <div className="h-fit">{name}</div>
+        <div className="h-fit text-sm md:text-lg">{name}</div>
       </div>
     </div>
   );
