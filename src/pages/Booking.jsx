@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
+import Footer from "./Footer";
 
 function Booking() {
   const [bookingName, SetName] = useState("");
@@ -78,12 +79,12 @@ function Booking() {
   return (
     <>
       <Navbar />
-      <div className="flex justify-around h-screen w-screen bg-[#F9FAFB] p-5 flex-col gap-10 md:flex-row">
+      <div className="flex justify-around h-screen w-screen bg-[#F9FAFB] px-5 pt-24 pb-5 flex-col gap-10 md:flex-row">
         <div className="  md:w-[55%] md:h-auto">
           <img src={img} className="rounded-3xl h-full w-full" />
         </div>
-        <div className="h-full flex flex-col gap-10  pr-2 w-full md:w-[40%] md:overflow-y-auto">
-          <div className="px-3 py-15 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] Poppins md:px-10a md:py-10">
+        <div className="h-full flex flex-col gap-10 pb-5 pr-2 w-full md:w-[40%] md:overflow-y-auto">
+          <div className="px-3 py-15 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] Poppins md:px-10 md:py-10">
             <div className="py-4">
               <FontAwesomeIcon icon={faStar} className="text-[#87d551]" /> 4.8
               (100 reviews)
@@ -100,9 +101,9 @@ function Booking() {
                   className="text-[#87d551] self-center text-lg md:text-2xl"
                 />
                 <b className="text-neutral-400 font-light text-sm md:text-md">
-                  Guests <br />
+                  Guests
                 </b>
-                {guests}
+                <b className="text-xs font-normal"> {guests}</b>
               </div>
               <div
                 className="px-3 py-1 bg-[#F9FAFB] flex flex-col text-center justify-center content-center
@@ -113,9 +114,9 @@ function Booking() {
                   className="text-[#87d551] self-center text-lg md:text-2xl"
                 />
                 <b className="text-neutral-400 font-light text-sm md:text-md">
-                  Bedroom <br />
+                  Bedroom
                 </b>
-                {bed}
+                <b className="text-xs font-normal">{bed}</b>
               </div>
               <div
                 className="px-3 py-1 bg-[#F9FAFB] flex flex-col text-center justify-center content-center
@@ -126,28 +127,30 @@ function Booking() {
                   className="text-[#87d551] self-center text-lg md:text-2xl"
                 />
                 <b className="text-neutral-400 font-light text-sm md:text-md">
-                  Bathroom <br />
+                  Bathroom
                 </b>
-                {bath}
+                <b className="text-xs font-normal"> {bath}</b>
               </div>
               <div
                 className="px-3 py-1 bg-[#F9FAFB] flex flex-col text-center justify-center content-center
-             rounded-2xl w-fit md:py-4 md:px-6"
+             rounded-2xl md:py-4 md:px-4"
               >
                 <FontAwesomeIcon
                   icon={faRuler}
                   className="text-[#87d551] self-center text-lg md:text-2xl"
                 />
                 <b className="text-neutral-400 font-light text-sm md:text-md">
-                  Area <br />
+                  Area
                 </b>
-                {size} m²
+                <b className="text-xs font-normal">{size} m²</b>
               </div>
             </div>
             <div className="w-full border-t  border-[#d3d3d3] my-8" />
             <div>
               <label className="text-2xl">About this room</label>
-              <p className="text-pretty text-lg font-light md:text-xl">{disc}</p>
+              <p className="text-pretty text-lg font-light md:text-xl">
+                {disc}
+              </p>
             </div>
           </div>
           <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
@@ -225,6 +228,7 @@ function Booking() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
