@@ -3,10 +3,10 @@ import temp from "../assets/temp-room.jpg";
 
 function Room() {
   const rooms = [
-    { id: 1, img: temp, name: "Room Name1" },
-    { id: 2, img: temp, name: "Room Name2" },
-    { id: 3, img: temp, name: "Room Name3" },
-    { id: 4, img: temp, name: "Room Name4" },
+    { id: 1, img: temp, name: "Standard" },
+    { id: 2, img: temp, name: "Double" },
+    { id: 3, img: temp, name: "Delux" },
+    { id: 4, img: temp, name: "Superior" },
   ];
   return (
     <div

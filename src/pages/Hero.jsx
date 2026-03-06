@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 function Hero() {
   const navigate = useNavigate();
-  const [name, setName] = useState("Room Name1");
+  const [name, setName] = useState("Standard");
   const handleClick = () => {
     navigate(`/Room/${name}`);
   };
   return (
     <div id="Hero" className="backgrounds ">
       <div className="bg-black/30 w-screen h-fit py-20 px-10 flex flex-col items-center md:space-y-10 md:justify-center md:h-screen md:py-10">
-        <div className="text-white text-5xl font-bold text-center text-pretty pt-5 align-text-top md:text-8xl md:align-middle ">
-          Land Of Peace <br /> LOP Inn
+        <div className="flex flex-col text-white text-5xl font-bold text-center align-text-top md:text-8xl md:align-middle ">
+          LOP Inn <b className="text-4xl">Land Of Peace</b>
         </div>
         <div className="bg-white rounded-2xl flex p-7 justify-evenly gap-10 w-fit text-left Poppins text-xl scale-55 md:scale-100 md:px-15 md:py-10 ">
           <div>
@@ -31,10 +31,10 @@ function Hero() {
                 setName(e.target.value);
               }}
             >
-              <option>Room Name1</option>
-              <option>Room Name2</option>
-              <option>Room Name3</option>
-              <option>Room Name4</option>
+              <option>Standard</option>
+              <option>Double</option>
+              <option>Delux</option>
+              <option>Superior</option>
             </select>
           </div>
           <div>
