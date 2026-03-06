@@ -23,8 +23,8 @@ function Booking() {
     {
       id: 1,
       img: temp,
-      name: "Room Name1",
-      disc: "Room Name1",
+      name: "Standard",
+      disc: "Standard",
       size: 125,
       beds: 2,
       baths: 2,
@@ -34,8 +34,8 @@ function Booking() {
     {
       id: 2,
       img: temp,
-      name: "Room Name2",
-      disc: "Room Name2",
+      name: "Double",
+      disc: "Double",
       size: 125,
       beds: 2,
       baths: 2,
@@ -45,8 +45,8 @@ function Booking() {
     {
       id: 3,
       img: temp,
-      name: "Room Name3",
-      disc: "Room Name3",
+      name: "Delux",
+      disc: "Delux",
       size: 125,
       beds: 2,
       baths: 2,
@@ -56,8 +56,8 @@ function Booking() {
     {
       id: 4,
       img: temp,
-      name: "Room Name4",
-      disc: "Room Name4",
+      name: "Superior",
+      disc: "Superior",
       size: 125,
       beds: 2,
       baths: 2,
@@ -151,7 +151,7 @@ function Booking() {
             </div>
           </div>
           <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
-            <label className="flex text-4xl w-full gap-2 justify-center p-5 md:text-6xl md:gap-5">
+            <label className="flex text-4xl w-full gap-2 justify-center p-5 md:text-6xl">
               Book Your <b className="text-[#87d551] underline">Stay</b>
             </label>
             <form className="Poppins flex flex-col gap-10">
