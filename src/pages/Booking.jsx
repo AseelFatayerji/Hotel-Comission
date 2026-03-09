@@ -29,7 +29,6 @@ function Booking({ rooms }) {
   }
 
   const { img, Price, Disc, Size, Baths, Beds, Guests, Req } = room;
-  console.log(Req)
   return (
     <>
       <Navbar />
