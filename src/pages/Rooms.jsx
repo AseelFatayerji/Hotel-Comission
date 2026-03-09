@@ -1,13 +1,19 @@
 import RoomCard from "../components/Room_Card";
-import temp from "../assets/temp-room.jpg";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+import { useEffect, useState } from "react";
 
 function Room() {
-  const rooms = [
-    { id: 1, img: temp, name: "Standard" },
-    { id: 2, img: temp, name: "Double" },
-    { id: 3, img: temp, name: "Delux" },
-    { id: 4, img: temp, name: "Superior" },
-  ];
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      const snapshot = await getDocs(collection(db, "Suites"));
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setRooms(data);
+    };
+    fetchRooms();
+  }, []);
   return (
     <div
       id="Rooms"
@@ -20,7 +26,7 @@ function Room() {
         {rooms.map((room) => {
           return (
             <div key={room.id}>
-              <RoomCard img={room.img} name={room.name} />
+              {/* <RoomCard img={room.img} name={room.name} /> */}
             </div>
           );
         })}

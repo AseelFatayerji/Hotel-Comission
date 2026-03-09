@@ -20,7 +20,7 @@ function Navbar() {
         {/* <!-- From Uiverse.io by vk-uiux -->  */}
         <div id="menuToggle" className="scale-75">
           <input id="checkbox" type="checkbox" />
-          <label className="toggle" for="checkbox">
+          <label className="toggle" htmlFor="checkbox">
             <div className="bar bar--top"></div>
             <div className="bar bar--middle"></div>
             <div className="bar bar--bottom"></div>

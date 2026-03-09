@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
-import temp from "../assets/temp-room.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBath,
@@ -14,58 +13,13 @@ import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import Footer from "./Footer";
 
-function Booking() {
+function Booking({rooms}) {
   const [bookingName, SetName] = useState("");
   const [bookingEmail, SetEmail] = useState("");
   const [bookingNumber, SetPhone] = useState("");
 
   const { room_name } = useParams();
-  const rooms = [
-    {
-      id: 1,
-      img: temp,
-      name: "Standard",
-      disc: "Standard",
-      size: 125,
-      beds: 2,
-      baths: 2,
-      guests: 4,
-      price: "125$",
-    },
-    {
-      id: 2,
-      img: temp,
-      name: "Double",
-      disc: "Double",
-      size: 125,
-      beds: 2,
-      baths: 2,
-      guests: 4,
-      price: "200$",
-    },
-    {
-      id: 3,
-      img: temp,
-      name: "Delux",
-      disc: "Delux",
-      size: 125,
-      beds: 2,
-      baths: 2,
-      guests: 4,
-      price: "225$",
-    },
-    {
-      id: 4,
-      img: temp,
-      name: "Superior",
-      disc: "Superior",
-      size: 125,
-      beds: 2,
-      baths: 2,
-      guests: 4,
-      price: "325$",
-    },
-  ];
+ 
   const room = rooms.find((item) => {
     return item.name == room_name;
   });
