@@ -28,7 +28,8 @@ function Booking({ rooms }) {
     return null;
   }
 
-  const { img, Price, Disc, Size, Baths, Beds, Guests } = room;
+  const { img, Price, Disc, Size, Baths, Beds, Guests, Req } = room;
+  console.log(Req)
   return (
     <>
       <Navbar />
@@ -105,6 +106,10 @@ function Booking({ rooms }) {
               <p className="text-pretty text-lg font-light md:text-xl">
                 {Disc}
               </p>
+            </div>
+            <div className="w-full border-t  border-[#d3d3d3] my-8" />
+            <div className="text-center text-2xl font-semibold text-red-600">
+              {Req}
             </div>
           </div>
           <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
