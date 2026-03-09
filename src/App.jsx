@@ -1,3 +1,4 @@
+import ScrollToTop from "./components/ScrollReset";
 import "./css/App.css";
 import Booking from "./pages/Booking";
 import MainPage from "./pages/MainPage";
@@ -7,6 +8,7 @@ function App() {
   return (
     <>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/Room/:room_name" element={<Booking />} />

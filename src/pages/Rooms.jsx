@@ -26,7 +26,7 @@ function Room() {
         {rooms.map((room) => {
           return (
             <div key={room.id}>
-              {/* <RoomCard img={room.img} name={room.name} /> */}
+              <RoomCard img={room.img} name={room.id} roominfo={room} />
             </div>
           );
         })}
