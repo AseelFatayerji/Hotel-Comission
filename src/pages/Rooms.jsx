@@ -1,19 +1,7 @@
 import RoomCard from "../components/Room_Card";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
-import { useEffect, useState } from "react";
 
-function Room() {
-  const [rooms, setRooms] = useState([]);
+function Room({rooms}) {
 
-  useEffect(() => {
-    const fetchRooms = async () => {
-      const snapshot = await getDocs(collection(db, "Suites"));
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setRooms(data);
-    };
-    fetchRooms();
-  }, []);
   return (
     <div
       id="Rooms"

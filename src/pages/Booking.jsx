@@ -13,7 +13,7 @@ import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import Footer from "./Footer";
 
-function Booking({ rooms }) {
+function Booking() {
   const [bookingName, SetName] = useState("");
   const [bookingEmail, SetEmail] = useState("");
   const [bookingNumber, SetPhone] = useState("");
