@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Hero() {
+function Hero({ rooms }) {
   const navigate = useNavigate();
+
   const [name, setName] = useState("Standard");
+  const [checkin, setCheckin] = useState("");
+  const [checkout, setCheckout] = useState("");
+  const [guests, setGuests] = useState(0);
+
   const handleClick = () => {
-    navigate(`/Room/${name}`);
+    navigate(`/Room/${name}`, {
+      state: { room: rooms.find((room) => room.id === name) },
+    });
   };
   return (
     <div id="Hero" className="backgrounds ">
@@ -31,10 +38,14 @@ function Hero() {
                 setName(e.target.value);
               }}
             >
-              <option>Standard</option>
-              <option>Double</option>
-              <option>Delux</option>
-              <option>Superior</option>
+              {rooms.map((room) => {
+                
+                return (
+                  <option key={room.id} value={room.id} disabled={room.Available === false}>
+                    {room.id}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div>
