@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 import Booking from "./pages/Booking";
 import MainPage from "./pages/MainPage";
+import NotFound from "./pages/404";
 import ScrollToTop from "./components/ScrollReset";
 
 import "./css/App.css";
@@ -20,8 +21,8 @@ function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/Room/:room_name" element={<Booking />} />
+          <Route path="/" element={<NotFound />} />
+          {/* <Route path="/Room/:room_name" element={<Booking />} /> */}
         </Routes>
       </Router>
     </>
