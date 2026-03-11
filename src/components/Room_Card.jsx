@@ -6,7 +6,7 @@ function RoomCard({ img, name, roominfo }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/Room/${name}`, { state: { room: roominfo } });
+    navigate(`/Room/${name}`);
   };
 
   return (

@@ -10,8 +10,10 @@ function Room() {
       id="Rooms"
       className="w-screen h-fit bg-white rounded-t-[3rem] p-5 space-y-5 mt-20 md:-mt-15 "
     >
-      <label className="flex w-full justify-center gap-1 px-5 py-15 text-3xl md:text-6xl md:gap-5">
-        Random <b className="text-[#87d551] underline"> Insprational </b> Quote
+      <label className="flex w-full justify-center font-semibold gap-1 px-5 pt-10 pb-16 text-xl md:text-4xl md:gap-2 capitalize">
+        Where comfort meets space,
+        <b className="text-[#87d551] underline">rest and productivity </b> find
+        their home.
       </label>
       <div className="flex flex-col items-center Poppins gap-5 md:scale-100 md:justify-evenly md:gap-10 md:flex-row">
         {rooms.map((room) => {
