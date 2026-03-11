@@ -15,31 +15,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 function MainPage() {
-  const [rooms, setRooms] = useState([]);
-
-  useEffect(() => {
-    const roomsRef = ref(db, "Suites");
-    onValue(roomsRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        const rooms = Object.entries(data).map(([id, value]) => ({
-          id,
-          ...value,
-        }));
-        setRooms(rooms);
-      }
-    });
-    return () => off(roomsRef);
-  }, []);
   return (
     <>
       <Navbar />
       <div className="section1">
-        <Hero rooms={rooms} />
+        <Hero/>
       </div>
       <div className="cover-wrapper bg-white rounded-t-[3rem] -mt-[15vh]">
         <div className="section2 z-1">
-          <Room rooms={rooms} />
+          <Room/>
         </div>
         <div className="section3 z-2 overflow-hidden">
           <Testimonials />

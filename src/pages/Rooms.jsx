@@ -1,7 +1,10 @@
 import RoomCard from "../components/Room_Card";
+import { useSelector } from "react-redux";
+function Room() {
+  const { rooms, status, error } = useSelector((state) => state.rooms);
 
-function Room({rooms}) {
-
+  if (status === "loading") return <p>Loading...</p>;
+  if (status === "failed") return <p>Error: {error}</p>;
   return (
     <div
       id="Rooms"

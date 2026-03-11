@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function Hero({ rooms }) {
+function Hero() {
   const navigate = useNavigate();
+  const { rooms, status, error } = useSelector((state) => state.rooms);
 
   const [name, setName] = useState("Standard");
   const [checkin, setCheckin] = useState("");
@@ -14,6 +16,10 @@ function Hero({ rooms }) {
       state: { room: rooms.find((room) => room.id === name) },
     });
   };
+  
+  if (status === "loading") return <p>Loading...</p>;
+  if (status === "failed") return <p>Error: {error}</p>;
+
   return (
     <div id="Hero" className="backgrounds ">
       <div className="bg-black/30 w-screen h-fit py-20 px-10 flex flex-col items-center md:space-y-10 md:justify-center md:h-screen md:py-10">

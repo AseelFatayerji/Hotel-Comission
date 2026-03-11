@@ -27,7 +27,7 @@ function RoomCard({ img, name, roominfo }) {
       )}
       {roominfo.Available && (
         <div className="md:text-xl text-md absolute flex justify-between inset-x-0 bottom-0 bg-linear-to-t rounded-b-2xl  from-black to-transparent h-fit p-5">
-          <div className="font-medium bg-white rounded-full px-5 py-1 text-center justify-center">
+          <div className="font-medium bg-white rounded-full px-5 py-1 text-center justify-center select-none">
             {name}
           </div>
           <button
