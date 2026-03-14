@@ -6,13 +6,11 @@ import {
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import { useMediaQuery } from "react-responsive";
 
 import ContactForm from "../components/Form";
 import Map from "../components/Map";
 
-function Contact() {
-  const isMobile = useMediaQuery({ query: "(max-width: 850px)" });
+function Contact({isMobile}) {
   return (
     <div
       id="Contact"
@@ -34,27 +32,27 @@ function Contact() {
           <Map />
         </div>
       </div>
-      <div className="flex text-white w-full items-center justify-center text-xl gap-1 md:text-4xl md:gap-3">
-        <div className="flex flex-col  w-fit md:flex-row">
+      <div className="flex text-white w-full items-center justify-center text-xl gap-1 sm:text-2xl sm:gap-3 md:text-4xl md:gap-3">
+        <div className="flex flex-col  w-fit sm:flex-row md:flex-row">
           <FontAwesomeIcon icon={faEnvelope} />
-          <b className="text-xs font-mono text-pretty md:text-sm">
+          <b className="text-xs font-mono text-pretty sm:text-sm md:text-sm">
             lopinncr@gmail.com
           </b>
         </div>
         <div className="flex items-center ">
           <div className="w-px h-10 max-h-full bg-gray-300 rounded-lg mx-1 md:mx-3 " />
-          <div className="flex flex-col gap-1 w-fit md:flex-row">
+          <div className="flex flex-col gap-1 sm:flex-row w-fit md:flex-row">
             <FontAwesomeIcon icon={faPhone} />
-            <b className="text-xs font-mono mx-1 text-pretty md:text-sm md:mx-2">
+            <b className="text-xs font-mono mx-1 text-pretty sm:text-sm md:text-sm md:mx-2">
               +506 8439 4242
             </b>
           </div>
         </div>
         <div className="flex items-center w-[35%]">
           <div className="w-px h-10 bg-gray-300 rounded-lg md:mx-3  " />
-          <div className="flex flex-col gap-1 md:flex-row">
+          <div className="flex flex-col gap-1 sm:flex-row md:flex-row">
             <FontAwesomeIcon icon={faLocationDot} />
-            <b className="text-xs font-mono mx-1 text-pretty md:text-sm md:mx-2">
+            <b className="text-xs font-mono mx-1 text-pretty sm:text-sm md:text-sm md:mx-2">
               Bosques de Doña Claudia Casa 23 {!isMobile && ", Heredia Province, Cariari, Costa Rica"}
             </b>
           </div>

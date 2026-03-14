@@ -2,7 +2,7 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
-function RoomCard({ img, name, roominfo }) {
+function RoomCard({ img, name, roominfo, isMobile }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -11,15 +11,15 @@ function RoomCard({ img, name, roominfo }) {
 
   return (
     <div
-      className={`rounded-2xl h-36 w-60 relative border-2 overflow-hidden align-bottomp shadow-[10px_7px_12px_2px_rgba(0,0,0,0.2)] md:h-92 md:w-72 ${roominfo.Available ? " border-[#87d551] hover:scale-105 hover:-mt-5 hover:ease-in-out" : "border-gray-600 "}`}
+      className={`rounded-2xl  relative border-2 overflow-hidden align-bottom shadow-[10px_7px_12px_2px_rgba(0,0,0,0.2)]  ${roominfo.Available ? " border-[#87d551] hover:scale-105 hover:-mt-5 hover:ease-in-out" : "border-gray-600 "} ${isMobile ? "h-36 w-60 sm:h-48 sm:w-82 md:w-96 md:h-72":"h-92 w-72"}`}
     >
       <img
         src={img}
         alt={name}
-        className={`absolute h-full rounded-xl ${roominfo.Available ? "" : "grayscale"}`}
+        className={`absolute h-full rounded-xl ${roominfo.Available ? "" : "grayscale"} ${isMobile ? "w-full" : "w-auto"}`}
       />
       {!roominfo.Available && (
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-red-500 text-3xl font-bold ">
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-red-500 font-bold text-xl md:text-3xl">
           <div className="-rotate-35 p-5 border-4 rounded-xl border-red-500 text-red-500">
             SOLD OUT
           </div>

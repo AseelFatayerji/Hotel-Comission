@@ -11,25 +11,27 @@ import { useEffect, useState } from "react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function MainPage() {
+  const isMobile = useMediaQuery({ query: "(max-width: 850px)" });
   return (
     <>
       <Navbar />
       <div className="section1">
-        <Hero/>
+        <Hero isMobile={isMobile}/>
       </div>
       <div className="cover-wrapper bg-white rounded-t-[3rem] -mt-[15vh]">
         <div className="section2 z-1">
-          <Room/>
+          <Room isMobile={isMobile}/>
         </div>
         <div className="section3 z-2 overflow-hidden">
-          <Testimonials />
+          <Testimonials isMobile={isMobile}/>
         </div>
         <div className="section4 z-3">
-          <Contact />
+          <Contact isMobile={isMobile}/>
           <Footer />
         </div>
       </div>

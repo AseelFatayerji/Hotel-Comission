@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function Hero() {
+function Hero({ isMobile }) {
   const navigate = useNavigate();
   const { rooms, status, error } = useSelector((state) => state.rooms);
 
@@ -16,17 +16,23 @@ function Hero() {
       state: { room: rooms.find((room) => room.id === name) },
     });
   };
-  
+
   if (status === "loading") return <p>Loading...</p>;
   if (status === "failed") return <p>Error: {error}</p>;
 
   return (
     <div id="Hero" className="backgrounds ">
-      <div className="bg-black/30 w-screen h-fit py-20 px-10 flex flex-col items-center md:space-y-10 md:justify-center md:h-screen md:py-10">
-        <div className="flex flex-col text-white text-5xl font-bold text-center align-text-top md:text-8xl md:align-middle ">
+      <div
+        className={`bg-black/30 w-screen px-10 items-center flex flex-col ${isMobile ? "h-fit py-20 " : "space-y-10 justify-center h-screen py-10]"}`}
+      >
+        <div
+          className={`flex flex-col text-white  font-bold text-center  ${isMobile ? "text-5xl py-10 align-text-top" : "align-middle text-8xl"}`}
+        >
           LOP Inn <b className="text-4xl">Land Of Peace</b>
         </div>
-        <div className="bg-white rounded-2xl flex p-7 justify-evenly gap-10 w-fit text-left Poppins text-xl scale-55 md:scale-100 md:px-15 md:py-10 ">
+        <div
+          className={`bg-white rounded-2xl flex justify-evenly w-fit text-left Poppins text-xl  ${isMobile ? "scale-50 text-lg p-7 gap-5 sm:scale-55 md:scale-85" : "px-15 py-10 gap-10 "}`}
+        >
           <div>
             Check Out <br />
             <input type="date" className="text-sm" alt="check out date" />
@@ -45,9 +51,12 @@ function Hero() {
               }}
             >
               {rooms.map((room) => {
-                
                 return (
-                  <option key={room.id} value={room.id} disabled={room.Available === false}>
+                  <option
+                    key={room.id}
+                    value={room.id}
+                    disabled={room.Available === false}
+                  >
                     {room.id}
                   </option>
                 );
