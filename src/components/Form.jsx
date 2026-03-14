@@ -1,3 +1,9 @@
+import {
+  faEnvelope,
+  faFileText,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 export default function ContactForm() {
@@ -26,35 +32,51 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="bg-white rounded-2xl flex flex-col justify-center p-10 gap-5 shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)]"
+      className="bg-white rounded-2xl flex flex-col justify-center px-10 py-5 gap-5 shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)]"
     >
       <div>
-        Name
-        <input
-          type="text"
-          name="name"
-          className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
-          required
-        />
+        <fieldset className="text-start border-2 text-neutral-500 border-neutral-500 rounded-lg p-2">
+          <legend className="px-1">Name</legend>
+          <input
+            name="name"
+            type="text"
+            className="w-full h-full outline-none text-lg"
+            placeholder="Enter your name"
+            alt="name input for contact form"
+            required
+          />
+        </fieldset>
       </div>
       <div>
-        Email
-        <input
-          type="email"
-          name="email"
-          className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
-          required
-        />
+        <fieldset className="text-start border-2 text-neutral-500 border-neutral-500 rounded-lg p-2">
+          <legend className="px-1">Email</legend>
+          <input
+            name="email"
+            type="email"
+            className="w-full h-full outline-none text-lg"
+            placeholder="Enter your email"
+            alt="email input for contact from"
+            required
+          />
+        </fieldset>
       </div>
       <div>
-        Message
-        <textarea
-          name="message"
-          className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
-          required
-        ></textarea>
+        <fieldset className="text-start border-2 text-neutral-500 border-neutral-500 rounded-lg p-2">
+          <legend className="px-1">Message</legend>
+          <textarea
+            name="messga"
+            className="w-full h-full outline-none text-lg"
+            placeholder="Enter your message"
+            alt="message input for contact form"
+            required
+          />
+        </fieldset>
       </div>
-      <button type="submit" className="w-fit px-6 py-2 self-center text-lg rounded-lg border-2 border-[#87d551] custom-button md:text-xl">
+      <button
+        type="submit"
+        className="w-fit px-6 py-2 self-center text-lg rounded-lg border-2 border-[#87d551] custom-button md:text-xl"
+        alt="submit button for contact form"
+      >
         Contact
       </button>
       <span>{result}</span>
