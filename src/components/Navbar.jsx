@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
-import logo from "../assets/logo.png";
 
 function Navbar() {
   const isMobile = useMediaQuery({ query: "(max-width: 850px)" });
@@ -12,7 +11,7 @@ function Navbar() {
     <nav className="flex justify-between items-center w-screen px-4 py-3 select-none fixed top-0 left-0 z-10">
       <div className="">
         <img
-          src={logo}
+          src="https://ik.imagekit.io/sas2seqly/LopInn/logo.png?updatedAt=1773022427960"
           alt="Land Of Peace"
           className="w-15 h-15 md:w-20 md:h-20"
         />

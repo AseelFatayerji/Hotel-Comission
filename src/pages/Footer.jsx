@@ -4,9 +4,7 @@ import {
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 import { useMediaQuery } from "react-responsive";
-import logo from "../assets/logo.png";
 
 function Footer() {
   const isMobile = useMediaQuery({ query: "(max-width: 810px)" });
@@ -14,7 +12,7 @@ function Footer() {
     <footer className="flex flex-col w-screen px-4 py-2 rounded-t-[20px] bg-[#87d551] text-neutral-200 Poppins md:px-10">
       <div className="flex flex-row pt-3">
         <div className="flex justify-start h-20 w-20 pr-3 md:w-[35%] ">
-          <img alt="Land Of Peace Logo" src={logo} className="h-15 w-15 md:h-20 md:w-20" />
+          <img alt="Land Of Peace Logo" src="https://ik.imagekit.io/sas2seqly/LopInn/logo.png?updatedAt=1773022427960" className="h-15 w-15 md:h-20 md:w-20" />
         </div>
         <div className="flex w-[65%] justify-end text-nowrap text-sm md:text-lg">
           <div className="grid grid-cols-3 gap-16 md:gap-8">
