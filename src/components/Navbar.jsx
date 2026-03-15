@@ -1,7 +1,13 @@
 import { HashLink as NavLink } from "react-router-hash-link";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
+
 import logo from "../assets/logo.png";
 
 function Navbar() {
+  const isMobile = useMediaQuery({ query: "(max-width: 850px)" });
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className="flex justify-between items-center w-screen px-4 py-3 select-none fixed top-0 left-0 z-10">
       <div className="">
@@ -16,10 +22,15 @@ function Navbar() {
         <NavLink to="/#Rooms">Rooms</NavLink>
         <NavLink to="/#Contact">Contact</NavLink>
       </div>
-      <div className="text-white md:text-transparent md:pointer-none:">
+      <div className={`text-white  rounded-lg py-3 px-1 ${isMobile ? "bg-[#87d551]":"pointer-none text-transparent "}`}>
         {/* <!-- From Uiverse.io by vk-uiux -->  */}
         <div id="menuToggle" className="scale-75">
-          <input id="checkbox" type="checkbox" />
+          <input
+            id="checkbox"
+            type="checkbox"
+            checked={isOpen}
+            onChange={() => setIsOpen(!isOpen)}
+          />
           <label className="toggle" htmlFor="checkbox">
             <div className="bar bar--top"></div>
             <div className="bar bar--middle"></div>
@@ -27,6 +38,20 @@ function Navbar() {
           </label>
         </div>
       </div>
+      {isOpen && (
+        <motion.div
+          className="absolute justify-end rounded-lg bg-[#87d551]/50 backdrop-blur-sm py-3 px-2 overflow-hidden text-center top-16 right-4 sm:hidden"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <nav className="  w-fit flex flex-col gap-3  items-end ">
+            <NavLink to="/#Hero">Home</NavLink>
+            <NavLink to="/#Rooms">Rooms</NavLink>
+            <NavLink to="/#Contact">Contact</NavLink>
+          </nav>
+        </motion.div>
+      )}
     </nav>
   );
 }
