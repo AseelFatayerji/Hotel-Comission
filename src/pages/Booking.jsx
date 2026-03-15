@@ -35,7 +35,7 @@ function Booking() {
           Loading...
         </div>
       ) : (
-        <div className="flex justify-around h-screen w-screen bg-[#F9FAFB] px-5 pt-24 pb-5 flex-col gap-10 md:flex-row">
+        <div className="flex justify-around h-fit w-screen bg-[#F9FAFB] px-5 pt-24 pb-5 flex-col gap-10 md:flex-row md:h-screen">
           <div className="relative md:w-[55%] md:h-auto">
             <img src={img} className="rounded-3xl h-full w-full" />
             <div className="absolute rounded-3xl h-full w-full p-5 bottom-0 left-0 flex items-end text-5xl text-white  bg-linear-to-t from-black/70 via-black/20 to-transparent">
