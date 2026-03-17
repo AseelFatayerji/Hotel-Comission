@@ -48,8 +48,8 @@ function Contact({isMobile}) {
             </b>
           </div>
         </div>
-        <div className="flex items-center w-[35%]">
-          <div className="w-px h-10 bg-gray-300 rounded-lg md:mx-3  " />
+        <div className="flex items-center w-[35%] lg:w-[45%]">
+          <div className="w-px h-10 bg-gray-300 rounded-lg mx-1 md:mx-3 lg:w-0.5 " />
           <div className="flex flex-col gap-1 sm:flex-row md:flex-row">
             <FontAwesomeIcon icon={faLocationDot} />
             <b className="text-xs font-mono mx-1 text-pretty sm:text-sm md:text-sm md:mx-2 lg:text-lg">
