@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Loadings from "../components/Loadings";
 
 function Hero({ isMobile }) {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function Hero({ isMobile }) {
     });
   };
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <Loadings />;
   if (status === "failed") return <p>Error: {error}</p>;
 
   return (

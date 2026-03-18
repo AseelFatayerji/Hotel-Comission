@@ -22,8 +22,6 @@ function Booking() {
   const [bookingNumber, SetPhone] = useState("");
 
   const { room_name } = useParams();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const { img, Price, Disc, Size, Baths, Beds, Guests, Req } =
     rooms.find((room) => room.id === room_name) || {};
@@ -35,7 +33,7 @@ function Booking() {
           Loading...
         </div>
       ) : (
-        <div className="flex justify-around h-fit w-screen bg-[#F9FAFB] px-5 pt-24 pb-5 flex-col gap-10 md:flex-row md:h-screen">
+        <div className="flex justify-around h-fit w-screen bg-[#F9FAFB] px-5 pt-24 pb-5 flex-col gap-5 md:flex-row md:h-screen">
           <div className="relative md:w-[55%] md:h-auto">
             <img src={img} className="rounded-3xl h-full w-full" />
             <div className="absolute rounded-3xl h-full w-full p-5 bottom-0 left-0 flex items-end text-5xl text-white  bg-linear-to-t from-black/70 via-black/20 to-transparent">
@@ -117,7 +115,7 @@ function Booking() {
               </div>
             </div>
             <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
-              <label className="flex text-4xl w-full gap-2 justify-center p-5 md:text-6xl">
+              <label className="flex text-4xl w-full justify-center p-5 gap-2 md:text-6xl">
                 Book Your <b className="text-[#87d551] underline">Stay</b>
               </label>
               <form className="Poppins flex flex-col gap-10">
