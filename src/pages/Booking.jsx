@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBath,
@@ -10,12 +10,27 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./Footer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRooms } from "../Redux/Reducer";
 
 function Booking() {
-  const { rooms, status, error } = useSelector((state) => state.rooms);
+  const dispatch = useDispatch();
+  const { rooms, status, error, unsubscribe } = useSelector(
+    (state) => state.rooms,
+  );
+
+  useEffect(() => {
+    dispatch(fetchRooms());
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+      dispatch(clearRooms());
+    };
+  }, [dispatch]);
 
   const [bookingName, SetName] = useState("");
   const [bookingEmail, SetEmail] = useState("");

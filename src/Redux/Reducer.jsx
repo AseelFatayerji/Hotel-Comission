@@ -1,16 +1,30 @@
+// roomsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { ref, get } from "firebase/database";
+import { ref, onValue, off } from "firebase/database";
 import { db } from "../firebase";
 
-export const fetchRooms = createAsyncThunk("rooms/fetchRooms", async () => {
-  const roomsRef = ref(db, "Suites");
-  const snapshot = await get(roomsRef);
-  const data = snapshot.val();
-  if (data) {
-    return Object.entries(data).map(([id, value]) => ({ id, ...value }));
+export const fetchRooms = createAsyncThunk(
+  "rooms/fetchRooms",
+  async (_, { dispatch }) => {
+    const roomsRef = ref(db, "Suites");
+    
+    const unsubscribe = onValue(roomsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const roomsArray = Object.entries(data).map(([id, value]) => ({ 
+          id, 
+          ...value 
+        }));
+        dispatch(setRooms(roomsArray));
+      } else {
+        dispatch(setRooms([]));
+      }
+    }, (error) => {
+      dispatch(setError(error.message));
+    });
+    return true;
   }
-  return [];
-});
+);
 
 const roomsSlice = createSlice({
   name: "rooms",
@@ -19,15 +33,28 @@ const roomsSlice = createSlice({
     status: "idle",
     error: null
   },
-  reducers: {},
+  reducers: {
+    setRooms: (state, action) => {
+      state.rooms = action.payload;
+      state.status = "succeeded";
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+      state.status = "failed";
+    },
+    clearRooms: (state) => {
+      state.rooms = [];
+      state.status = "idle";
+      state.error = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchRooms.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchRooms.fulfilled, (state, action) => {
+      .addCase(fetchRooms.fulfilled, (state) => {
         state.status = "succeeded";
-        state.rooms = action.payload;
       })
       .addCase(fetchRooms.rejected, (state, action) => {
         state.status = "failed";
@@ -36,4 +63,5 @@ const roomsSlice = createSlice({
   }
 });
 
+export const { setRooms, setError, clearRooms } = roomsSlice.actions;
 export default roomsSlice.reducer;

@@ -1,10 +1,24 @@
 import RoomCard from "../components/Room_Card";
 import Loadings from "../components/Loadings";
-import { useSelector } from "react-redux";
-import { useState, useRef, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useRef, useMemo, useEffect } from "react";
+import { fetchRooms } from "../Redux/Reducer";
 
 function Room({ isMobile }) {
-  const { rooms, status, error } = useSelector((state) => state.rooms);
+  const dispatch = useDispatch();
+  const { rooms, status, error, unsubscribe } = useSelector((state) => state.rooms);
+
+  useEffect(() => {
+    dispatch(fetchRooms());
+  
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+      dispatch(clearRooms());
+    };
+  }, [dispatch]);
+
   const [hoveredId, setHoveredId] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);

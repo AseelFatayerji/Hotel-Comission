@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loadings from "../components/Loadings";
+import { fetchRooms } from "../Redux/Reducer";
 
 function Hero({ isMobile }) {
   const navigate = useNavigate();
-  const { rooms, status, error } = useSelector((state) => state.rooms);
+  const dispatch = useDispatch();
+  const { rooms, status, error, unsubscribe } = useSelector(
+    (state) => state.rooms,
+  );
+
+  useEffect(() => {
+    dispatch(fetchRooms());
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+      dispatch(clearRooms());
+    };
+  }, [dispatch]);
 
   const [name, setName] = useState("Standard");
   const [checkin, setCheckin] = useState("");
