@@ -73,7 +73,7 @@ function Room({ isMobile }) {
         }`}
       >
         Where
-        <b className="text-[#87d551] underline"> comfort meets </b> rest and
+        <b className="text-[#7BC24A] underline"> comfort meets </b> rest and
         productivity.
       </label>
 
@@ -110,7 +110,7 @@ function Room({ isMobile }) {
                 onClick={() => scrollTo(i)}
                 className={`rounded-full transition-all duration-300 ${
                   i === activeIndex
-                    ? "w-5 h-2 bg-[#87d551]"
+                    ? "w-5 h-2 bg-[#7BC24A]"
                     : "w-2 h-2 bg-gray-300"
                 }`}
               />

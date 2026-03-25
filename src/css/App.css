@@ -1,5 +1,5 @@
 :root {
-  --color: #87d551;
+  --color: #7BC24A;
 }
 
 .Poppins {
@@ -31,7 +31,7 @@ nav a.active {
 }
 
 input {
-  opacity: 50%;
+  opacity: 70%;
   cursor: pointer;
 }
 input:hover {

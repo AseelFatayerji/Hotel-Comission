@@ -23,7 +23,7 @@ function Testimonial_Card({ rating, name, review, img }) {
     <div
       className={`flex flex-col py-2 px-5 border-2 border-[#B4B4B4] bg-neutral-100 rounded-2xl  Poppins ${isMobile ? "shrink grow w-[18rem]" : "shrink-0 grow-0 basis-0.6 w-[20rem]"}`}
     >
-      <div className="text-[#87d551] gap-2 flex py-3 text-sm md:text-xl">
+      <div className="text-[#7BC24A] gap-2 flex py-3 text-sm md:text-xl">
         {stars.map((star, index) => {
           return <FontAwesomeIcon icon={star} key={index} />;
         })}
@@ -33,7 +33,8 @@ function Testimonial_Card({ rating, name, review, img }) {
       <div className="flex gap-5 text-lg items-center py-2">
         <img
           src={img}
-          className="rounded-full border-4 border-[#87d551] h-10 w-10 md:h-15 md:w-15"
+          className="rounded-full border-4 border-[#7BC24A] h-10 w-10 md:h-15 md:w-15"
+          alt={name}
         />
         <div className="h-fit text-sm md:text-lg">{name}</div>
       </div>

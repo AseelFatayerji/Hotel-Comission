@@ -50,12 +50,23 @@ function Hero({ isMobile }) {
           className={`bg-white rounded-2xl flex justify-evenly w-fit text-left Poppins text-xl  ${isMobile ? "scale-50 text-lg p-7 gap-5 sm:scale-55 md:scale-85" : "px-15 py-10 gap-10 "}`}
         >
           <div>
-            Check Out <br />
-            <input type="date" className="text-sm" alt="check out date" />
+            Check In
+            <br />
+            <input
+              type="date"
+              className="text-sm"
+              alt="check in date"
+              aria-label="Check in date"
+            />
           </div>
           <div>
-            Check In
-            <br /> <input type="date" className="text-sm" alt="check in date" />
+            Check Out <br />
+            <input
+              type="date"
+              className="text-sm"
+              alt="check out date"
+              aria-label="Check out date"
+            />
           </div>
           <div>
             Room
@@ -65,6 +76,7 @@ function Hero({ isMobile }) {
               onChange={(e) => {
                 setName(e.target.value);
               }}
+              aria-label="Select room type"
             >
               {rooms.map((room) => {
                 return (
@@ -72,6 +84,7 @@ function Hero({ isMobile }) {
                     key={room.id}
                     value={room.id}
                     disabled={room.Available === false}
+                    label={room.id}
                   >
                     {room.id}
                   </option>
@@ -84,13 +97,15 @@ function Hero({ isMobile }) {
             <input
               type="number"
               alt="number of guests"
+              aria-label="number of guests"
               defaultValue={0}
               className="w-20 text-sm"
             />
           </div>
           <button
-            className="rounded-lg border-2 py-1.5 px-6 border-[#87d551] custom-button text-lg md:text-xl"
+            className="rounded-lg border-2 py-1.5 px-6 border-[#7BC24A] custom-button text-lg md:text-xl"
             onClick={handleClick}
+            aria-label="book now button"
           >
             Book Now
           </button>

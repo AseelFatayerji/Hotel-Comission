@@ -1,9 +1,3 @@
-import {
-  faEnvelope,
-  faFileText,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 export default function ContactForm() {
@@ -42,7 +36,7 @@ export default function ContactForm() {
             type="text"
             className="w-full h-full outline-none text-lg"
             placeholder="Enter your name"
-            alt="name input for contact form"
+            aria-label="name input for contact form"
             required
           />
         </fieldset>
@@ -55,7 +49,7 @@ export default function ContactForm() {
             type="email"
             className="w-full h-full outline-none text-lg"
             placeholder="Enter your email"
-            alt="email input for contact from"
+            aria-label="email input for contact from"
             required
           />
         </fieldset>
@@ -67,15 +61,15 @@ export default function ContactForm() {
             name="messga"
             className="w-full h-full outline-none text-lg"
             placeholder="Enter your message"
-            alt="message input for contact form"
+            aria-label="message input for contact form"
             required
           />
         </fieldset>
       </div>
       <button
         type="submit"
-        className="w-fit px-6 py-2 self-center text-lg rounded-lg border-2 border-[#87d551] custom-button md:text-xl"
-        alt="submit button for contact form"
+        className="w-fit px-6 py-2 self-center text-lg rounded-lg border-2 border-[#7BC24A] custom-button md:text-xl"
+        aria-label="submit button for contact form"
       >
         Contact
       </button>

@@ -64,7 +64,7 @@ function RoomCard({ img, name, roominfo, isMobile }) {
             {name}
             <span
               className={`
-                absolute bottom-0 left-0 h-0.5 bg-[#87d551]
+                absolute bottom-0 left-0 h-0.5 bg-[#7BC24A]
                 transition-all duration-500
                 ${isHovered ? "w-full" : "w-0"}
               `}
@@ -78,7 +78,7 @@ function RoomCard({ img, name, roominfo, isMobile }) {
             `}
           >
             <button
-              className="flex items-center rounded-full border-2 py-1.5 px-2 gap-2 border-[#87d551] custom-button "
+              className="flex items-center rounded-full border-2 py-1.5 px-2 gap-2 border-[#7BC24A] custom-button "
               onClick={(e) => {
                 e.stopPropagation();
                 navigate(`/Room/${name}`);

@@ -18,9 +18,9 @@ function Contact({isMobile}) {
     >
       <div className="flex gap-10">
         <div className="md:w-[50%]">
-          <label className="text-6xl text-white/80 capitalize">
+          <h2 className="text-6xl text-white/80 capitalize">
             Get in touch!
-          </label>
+          </h2>
           <p className="text-pretty text-white/50 text-lg my-5">
             We are here to assist you with any inquiries, feedback, or support
             you may need. Please fill out the contact form below, and our team
