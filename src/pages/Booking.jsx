@@ -1,4 +1,7 @@
-import { useParams } from "react-router-dom";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { firestore } from "../firebase";
+import { useLocation } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBath,
@@ -12,7 +15,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 import { fetchRooms } from "../Redux/Reducer";
 
@@ -21,6 +23,7 @@ import Footer from "./Footer";
 
 function Booking() {
   const location = useLocation();
+
   const dispatch = useDispatch();
 
   const { rooms, status, error, unsubscribe } = useSelector(
@@ -48,8 +51,12 @@ function Booking() {
   const [bookingNumber, SetPhone] = useState("");
   const [bookingDateIn, setCheckIn] = useState(checkin || 0);
   const [bookingDateOut, setCheckOut] = useState(checkout || 0);
+
   const [bookingGuests, setBookingGuests] = useState(initialGuests || 1);
   const [guestError, setGuestError] = useState("");
+
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const extraGuestFee = useMemo(() => {
     const baseGuests = 3;
@@ -72,7 +79,33 @@ function Booking() {
       setGuestError("");
     }
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setSubmitError("");
 
+    try {
+      await addDoc(collection(firestore, "Bookings"), {
+        "Full Name": bookingName,
+        Email: bookingEmail,
+        Phone: bookingNumber,
+        Guests: bookingGuests,
+        Arrived: false,
+        Cost: totalPrice,
+        "Check In": checkin || "",
+        "Check Out": checkout || "",
+        "Room Number": 0,
+        "Room Type": room_name,
+        Source: "Online",
+        Archive: false,
+      });
+    } catch (err) {
+      setSubmitError("Failed to submit booking. Please try again.");
+      console.error(err);
+    } finally {
+      setSubmitting(false);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -177,7 +210,10 @@ function Booking() {
                 <label className="flex text-4xl w-full justify-center p-5 gap-2 md:text-6xl">
                   Book Your <b className="text-[#87d551] underline">Stay</b>
                 </label>
-                <form className="Poppins flex flex-col gap-10">
+                <form
+                  className="Poppins flex flex-col gap-10"
+                  onSubmit={handleSubmit}
+                >
                   <div className="text-left flex flex-col">
                     Name
                     <div className="flex">
@@ -284,7 +320,16 @@ function Booking() {
                       />
                     </div>
                   </div>
-                  <button className="w-fit px-6 py-2 self-center text-xl rounded-lg border-2 border-[#87d551] custom-button md:text-3xl">
+                  {submitError && (
+                    <p className="text-red-500 text-sm text-center">
+                      {submitError}
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="w-fit px-6 py-2 self-center text-xl rounded-lg border-2 border-[#87d551] custom-button md:text-3xl"
+                  >
                     Book Now
                   </button>
                 </form>
