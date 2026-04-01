@@ -1,6 +1,6 @@
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import { firestore } from "../firebase";
-import { useLocation } from "react-router-dom";
+import { booking } from "../firebase";
+import { useLocation, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,13 +13,15 @@ import {
   faStar,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchRooms } from "../Redux/Reducer";
 
 import Navbar from "../components/Navbar";
 import Footer from "./Footer";
+import emailjs from "@emailjs/browser";
+import BookingPopup from "../components/BookingPopup";
 
 function Booking() {
   const location = useLocation();
@@ -56,7 +58,8 @@ function Booking() {
   const [guestError, setGuestError] = useState("");
 
   const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState("");
+
+  const [popupStatus, setPopupStatus] = useState(null);
 
   const extraGuestFee = useMemo(() => {
     const baseGuests = 3;
@@ -81,11 +84,10 @@ function Booking() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
-    setSubmitError("");
+    setPopupStatus("loading");
 
     try {
-      await addDoc(collection(firestore, "Bookings"), {
+      await addDoc(collection(booking, "Bookings"), {
         "Full Name": bookingName,
         Email: bookingEmail,
         Phone: bookingNumber,
@@ -99,11 +101,10 @@ function Booking() {
         Source: "Online",
         Archive: false,
       });
+      setPopupStatus("success");
     } catch (err) {
-      setSubmitError("Failed to submit booking. Please try again.");
       console.error(err);
-    } finally {
-      setSubmitting(false);
+      setPopupStatus("error");
     }
   };
   return (
@@ -320,11 +321,6 @@ function Booking() {
                       />
                     </div>
                   </div>
-                  {submitError && (
-                    <p className="text-red-500 text-sm text-center">
-                      {submitError}
-                    </p>
-                  )}
                   <button
                     type="submit"
                     disabled={submitting}
@@ -339,6 +335,14 @@ function Booking() {
         </div>
       )}
       <Footer />
+      {popupStatus && (
+        <div className="absolute h-screen w-screen bg-black/40 flex items-center justify-center">
+          <BookingPopup
+            status={popupStatus}
+            onClose={() => setPopupStatus(null)}
+          />
+        </div>
+      )}
     </>
   );
 }
