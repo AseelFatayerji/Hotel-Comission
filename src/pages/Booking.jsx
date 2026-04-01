@@ -190,7 +190,7 @@ function Booking() {
                         placeholder="Enter Your Full Name"
                         className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
                         onChange={(e) => {
-                          SetName(value);
+                          SetName(e.target.value);
                         }}
                       />
                     </div>
@@ -208,7 +208,7 @@ function Booking() {
                         placeholder="your-email@mail.com"
                         className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
                         onChange={(e) => {
-                          SetEmail(value);
+                          SetEmail(e.target.value);
                         }}
                       />
                     </div>
@@ -226,7 +226,7 @@ function Booking() {
                         placeholder="123456789"
                         className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
                         onChange={(e) => {
-                          SetPhone(value);
+                          SetPhone(e.target.value);
                         }}
                       />
                     </div>
