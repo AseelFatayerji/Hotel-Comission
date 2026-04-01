@@ -27,13 +27,17 @@ function Hero({ isMobile }) {
   const [checkout, setCheckout] = useState("");
   const [guests, setGuests] = useState(0);
 
-const availableRooms = useMemo(() => {
-  return rooms.filter((room) => room.Available === true);
-}, [rooms]);
+  const availableRooms = useMemo(() => {
+    return rooms.filter((room) => room.Available === true);
+  }, [rooms]);
 
   const handleClick = () => {
     navigate(`/Room/${name}`, {
-      state: { room: rooms.find((room) => room.id === name) },
+      state: {
+        checkin,
+        checkout,
+        guests,
+      },
     });
   };
 
@@ -59,6 +63,9 @@ const availableRooms = useMemo(() => {
             <input
               type="date"
               className="text-sm"
+              onChange={(e) => {
+                setCheckin(e.target.value);
+              }}
               alt="check in date"
               aria-label="Check in date"
             />
@@ -68,6 +75,9 @@ const availableRooms = useMemo(() => {
             <input
               type="date"
               className="text-sm"
+              onChange={(e) => {
+                setCheckout(e.target.value);
+              }}
               alt="check out date"
               aria-label="Check out date"
             />
@@ -100,10 +110,11 @@ const availableRooms = useMemo(() => {
             Guests <br />
             <input
               type="number"
-              alt="number of guests"
-              aria-label="number of guests"
-              defaultValue={0}
+              min={1}
+              max={rooms.find((r) => r.id === name)?.Guests || 1}
+              defaultValue={1}
               className="w-20 text-sm"
+              onChange={(e) => setGuests(Number(e.target.value))}
             />
           </div>
           <button
