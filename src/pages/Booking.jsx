@@ -42,11 +42,11 @@ function Booking() {
     };
   }, [dispatch]);
 
-  const { room_name } = useParams();
+  const { room_type } = useParams();
   const { checkin, checkout, guests: initialGuests } = location.state || {};
 
   const { img, Price, Disc, Size, Baths, Beds, Guests, Req } =
-    rooms.find((room) => room.id === room_name) || {};
+    rooms.find((room) => room.id === room_type) || {};
 
   const [bookingName, SetName] = useState("");
   const [bookingEmail, SetEmail] = useState("");
@@ -98,7 +98,7 @@ function Booking() {
         "Check In": checkin ? Timestamp.fromDate(new Date(checkin)) : null,
         "Check Out": checkout ? Timestamp.fromDate(new Date(checkout)) : null,
         "Room Number": 0,
-        "Room Type": room_name,
+        "Room Type": room_type.split(" ")[0],
         "Source": "Online",
         "Archive": false,
       });
@@ -140,7 +140,7 @@ function Booking() {
                 <FontAwesomeIcon icon={faStar} className="text-[#87d551]" /> 4.8
                 (100 reviews)
               </div>
-              <label className="text-3x3 py-1 font-bold">{room_name}</label>
+              <label className="text-3x3 py-1 font-bold">{room_type}</label>
               <div className="w-full border-t border-[#d3d3d3] my-8" />
               <div className="flex justify-evenly gap-1 md:gap-4">
                 <div
