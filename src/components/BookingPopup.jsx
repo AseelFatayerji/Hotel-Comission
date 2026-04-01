@@ -1,4 +1,5 @@
-import Loadings from "./Loadings";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 function BookingPopup({ status, onClose }) {
   return (
@@ -6,7 +7,13 @@ function BookingPopup({ status, onClose }) {
       <div className="bg-white rounded-3xl p-10 flex flex-col items-center gap-6 max-w-sm w-full mx-4 shadow-2xl">
         {status === "loading" && (
           <>
-            <div className="w-16 h-16 border-4 border-[#7BC24A] border-t-transparent rounded-full animate-spin" />
+            <div className="loading scale-125">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
             <p className="text-xl font-semibold text-gray-700">
               Confirming your booking...
             </p>
@@ -15,7 +22,7 @@ function BookingPopup({ status, onClose }) {
 
         {status === "success" && (
           <>
-            <Loadings />
+            <FontAwesomeIcon icon={faCircleCheck} className="text-5xl text-[#7BC24A]" />
             <p className="text-2xl font-bold text-gray-800">
               Booking Confirmed!
             </p>
