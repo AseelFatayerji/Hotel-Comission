@@ -129,7 +129,7 @@ function Booking() {
                 {Req}
               </div>
             </div>
-            <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
+           {Req == "" && <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
               <label className="flex text-4xl w-full justify-center p-5 gap-2 md:text-6xl">
                 Book Your <b className="text-[#87d551] underline">Stay</b>
               </label>
@@ -201,7 +201,7 @@ function Booking() {
                   Book Now
                 </button>
               </form>
-            </div>
+            </div>}
           </div>
         </div>
       )}

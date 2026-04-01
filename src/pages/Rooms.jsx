@@ -6,11 +6,13 @@ import { fetchRooms } from "../Redux/Reducer";
 
 function Room({ isMobile }) {
   const dispatch = useDispatch();
-  const { rooms, status, error, unsubscribe } = useSelector((state) => state.rooms);
+  const { rooms, status, error, unsubscribe } = useSelector(
+    (state) => state.rooms,
+  );
 
   useEffect(() => {
     dispatch(fetchRooms());
-  
+
     return () => {
       if (unsubscribe) {
         unsubscribe();
@@ -26,16 +28,18 @@ function Room({ isMobile }) {
   if (status === "loading") return <Loadings />;
   if (status === "failed") return <p>Error: {error}</p>;
 
+  const availableRooms = useMemo(() => {
+    return rooms.filter((room) => room.Available === true);
+  }, [rooms]);
   const reorderedRooms = useMemo(() => {
-    if (rooms.length < 2) return rooms;
-    const newRooms = [...rooms];
+    if (availableRooms.length < 2) return availableRooms;
+    const newRooms = [...availableRooms];
     const first = newRooms[0];
     const last = newRooms[newRooms.length - 1];
     newRooms[0] = last;
     newRooms[newRooms.length - 1] = first;
     return newRooms;
-  }, [rooms]);
-
+  }, [availableRooms]);
   const bentoSpan = (index) => {
     if (index === 0) return "col-span-2 row-span-2";
     if (index === 3) return "col-span-2";
@@ -129,8 +133,8 @@ function Room({ isMobile }) {
                   hoveredId === null
                     ? ""
                     : hoveredId === room.id
-                    ? "scale-[1.04] z-20 brightness-100"
-                    : "scale-[0.94] brightness-60"
+                      ? "scale-[1.04] z-20 brightness-100"
+                      : "scale-[0.94] brightness-60"
                 }
               `}
               onMouseEnter={() => setHoveredId(room.id)}

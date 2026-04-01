@@ -27,6 +27,10 @@ function Hero({ isMobile }) {
   const [checkout, setCheckout] = useState("");
   const [guests, setGuests] = useState(0);
 
+const availableRooms = useMemo(() => {
+  return rooms.filter((room) => room.Available === true);
+}, [rooms]);
+
   const handleClick = () => {
     navigate(`/Room/${name}`, {
       state: { room: rooms.find((room) => room.id === name) },
@@ -78,7 +82,7 @@ function Hero({ isMobile }) {
               }}
               aria-label="Select room type"
             >
-              {rooms.map((room) => {
+              {availableRooms.map((room) => {
                 return (
                   <option
                     key={room.id}
