@@ -87,20 +87,22 @@ function Booking() {
     setPopupStatus("loading");
 
     try {
-      await addDoc(collection(booking, "Bookings"), {
+      console.log("sending");
+      await addDoc(collection(booking, "Booking"), {
         "Full Name": bookingName,
-        Email: bookingEmail,
-        Phone: bookingNumber,
-        Guests: bookingGuests,
-        Arrived: false,
-        Cost: totalPrice,
-        "Check In": checkin || "",
-        "Check Out": checkout || "",
+        "Email": bookingEmail,
+        "Phone": bookingNumber,
+        "Guests": bookingGuests,
+        "Arrived": false,
+        "Cost": totalPrice,
+        "Check In": checkin ? Timestamp.fromDate(new Date(checkin)) : null,
+        "Check Out": checkout ? Timestamp.fromDate(new Date(checkout)) : null,
         "Room Number": 0,
         "Room Type": room_name,
-        Source: "Online",
-        Archive: false,
+        "Source": "Online",
+        "Archive": false,
       });
+      console.log("sent");
       setPopupStatus("success");
     } catch (err) {
       console.error(err);
