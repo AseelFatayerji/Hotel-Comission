@@ -90,17 +90,21 @@ function Booking() {
       console.log("sending");
       await addDoc(collection(booking, "Booking"), {
         "Full Name": bookingName,
-        "Email": bookingEmail,
-        "Phone": bookingNumber,
-        "Guests": bookingGuests,
-        "Arrived": false,
-        "Cost": totalPrice,
-        "Check In": checkin ? Timestamp.fromDate(new Date(checkin)) : bookingDateIn,
-        "Check Out": checkout ? Timestamp.fromDate(new Date(checkout)) : bookingDateOut,
+        Email: bookingEmail,
+        Phone: bookingNumber,
+        Guests: bookingGuests,
+        Arrived: false,
+        Cost: totalPrice,
+        "Check In": checkin
+          ? Timestamp.fromDate(new Date(checkin))
+          : bookingDateIn,
+        "Check Out": checkout
+          ? Timestamp.fromDate(new Date(checkout))
+          : bookingDateOut,
         "Room Number": 0,
         "Room Type": room_name.split(" ")[0],
-        "Source": "Online",
-        "Archive": false,
+        Source: "Online",
+        Archive: false,
       });
       console.log("sent");
       setPopupStatus("success");
@@ -338,12 +342,10 @@ function Booking() {
       )}
       <Footer />
       {popupStatus && (
-        <div className="absolute h-screen w-screen bg-black/40 flex items-center justify-center">
-          <BookingPopup
-            status={popupStatus}
-            onClose={() => setPopupStatus(null)}
-          />
-        </div>
+        <BookingPopup
+          status={popupStatus}
+          onClose={() => setPopupStatus(null)}
+        />
       )}
     </>
   );

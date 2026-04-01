@@ -3,7 +3,7 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 function BookingPopup({ status, onClose }) {
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white rounded-3xl p-10 flex flex-col items-center gap-6 max-w-sm w-full mx-4 shadow-2xl">
         {status === "loading" && (
           <>
@@ -26,7 +26,7 @@ function BookingPopup({ status, onClose }) {
             <p className="text-2xl font-bold text-gray-800">
               Booking Confirmed!
             </p>
-            <p className="text-gray-500 text-center">
+            <p className="text-gray-500 text-center text-lg">
               A confirmation email has been sent to your inbox.
             </p>
             <button
