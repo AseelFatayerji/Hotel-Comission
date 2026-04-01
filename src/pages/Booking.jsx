@@ -87,7 +87,6 @@ function Booking() {
     setPopupStatus("loading");
 
     try {
-      console.log("sending");
       await addDoc(collection(booking, "Booking"), {
         "Full Name": bookingName,
         Email: bookingEmail,
@@ -97,16 +96,15 @@ function Booking() {
         Cost: totalPrice,
         "Check In": checkin
           ? Timestamp.fromDate(new Date(checkin))
-          : bookingDateIn,
+          : Timestamp.fromDate(new Date(bookingDateIn)),
         "Check Out": checkout
           ? Timestamp.fromDate(new Date(checkout))
-          : bookingDateOut,
+          : Timestamp.fromDate(new Date(bookingDateOut)),
         "Room Number": 0,
         "Room Type": room_name.split(" ")[0],
         Source: "Online",
         Archive: false,
       });
-      console.log("sent");
       setPopupStatus("success");
     } catch (err) {
       console.error(err);
