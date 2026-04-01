@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,12 +10,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useEffect, useState } from "react";
-import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+
 import { fetchRooms } from "../Redux/Reducer";
 
+import Navbar from "../components/Navbar";
+import Footer from "./Footer";
+
 function Booking() {
+  const location = useLocation();
   const dispatch = useDispatch();
+
   const { rooms, status, error, unsubscribe } = useSelector(
     (state) => state.rooms,
   );
@@ -32,14 +37,41 @@ function Booking() {
     };
   }, [dispatch]);
 
-  const [bookingName, SetName] = useState("");
-  const [bookingEmail, SetEmail] = useState("");
-  const [bookingNumber, SetPhone] = useState("");
-
   const { room_name } = useParams();
+  const { checkin, checkout, guests: initialGuests } = location.state || {};
 
   const { img, Price, Disc, Size, Baths, Beds, Guests, Req } =
     rooms.find((room) => room.id === room_name) || {};
+
+  const [bookingName, SetName] = useState("");
+  const [bookingEmail, SetEmail] = useState("");
+  const [bookingNumber, SetPhone] = useState("");
+  const [bookingDateIn, setCheckin] = useState(checkin || 0);
+  const [bookingGuests, setBookingGuests] = useState(initialGuests || 1);
+  const [guestError, setGuestError] = useState("");
+
+  const extraGuestFee = useMemo(() => {
+    const baseGuests = 2; // base included guests
+    const extra = Math.max(0, bookingGuests - baseGuests);
+    return extra * 10;
+  }, [bookingGuests]);
+
+  const totalPrice = Price ? Price + extraGuestFee : 0;
+
+  const handleGuestChange = (e) => {
+    const value = Number(e.target.value);
+    if (value > Guests) {
+      setGuestError(`Max capacity is ${Guests} guests`);
+      setBookingGuests(Guests);
+    } else if (value < 1) {
+      setBookingGuests(1);
+      setGuestError("");
+    } else {
+      setBookingGuests(value);
+      setGuestError("");
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -52,7 +84,17 @@ function Booking() {
           <div className="relative md:w-[55%] md:h-auto">
             <img src={img} className="rounded-3xl h-full w-full" />
             <div className="absolute rounded-3xl h-full w-full p-5 bottom-0 left-0 flex items-end text-5xl text-white  bg-linear-to-t from-black/70 via-black/20 to-transparent">
-              {Price}$/Night
+              <div className="flex flex-col">
+                <span className="text-2xl line-through opacity-60">
+                  {extraGuestFee > 0 ? `$${Price}/Night` : ""}
+                </span>
+                ${totalPrice}/Night
+                {extraGuestFee > 0 && (
+                  <span className="text-sm font-light">
+                    Includes +${extraGuestFee} extra guest fee
+                  </span>
+                )}
+              </div>
             </div>
           </div>
           <div className="h-full flex flex-col gap-10 pb-5 pr-2 w-full md:w-[40%] md:overflow-y-auto">
@@ -129,79 +171,87 @@ function Booking() {
                 {Req}
               </div>
             </div>
-           {Req == "" && <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
-              <label className="flex text-4xl w-full justify-center p-5 gap-2 md:text-6xl">
-                Book Your <b className="text-[#87d551] underline">Stay</b>
-              </label>
-              <form className="Poppins flex flex-col gap-10">
-                <div className="text-left flex flex-col">
-                  Name
-                  <div className="flex">
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      className="border-2 bg-[#F9FAFB] border-neutral-300 py-4 border-r-0 px-2 rounded-l-md"
-                    />
-                    <input
-                      type="text"
-                      alt="enter your name"
-                      placeholder="Enter Your Full Name"
-                      className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
-                      onChange={(e) => {
-                        SetName(value);
-                      }}
-                    />
+            {Req == "" && (
+              <div className="px-5 py-10 flex flex-col gap-8 bg-white rounded-2xl shadow-[6px_5px_6px_0px_rgba(0,0,0,0.1)] md:px-10 md:py-15">
+                <label className="flex text-4xl w-full justify-center p-5 gap-2 md:text-6xl">
+                  Book Your <b className="text-[#87d551] underline">Stay</b>
+                </label>
+                <form className="Poppins flex flex-col gap-10">
+                  <div className="text-left flex flex-col">
+                    Name
+                    <div className="flex">
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className="border-2 bg-[#F9FAFB] border-neutral-300 py-4 border-r-0 px-2 rounded-l-md"
+                      />
+                      <input
+                        type="text"
+                        alt="enter your name"
+                        placeholder="Enter Your Full Name"
+                        className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
+                        onChange={(e) => {
+                          SetName(value);
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="text-left flex flex-col">
-                  Email
-                  <div className="flex">
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      className="border-2 bg-[#F9FAFB]  border-neutral-300 py-4 border-r-0 px-2 rounded-l-md"
-                    />
-                    <input
-                      type="email"
-                      alt="enter your email"
-                      placeholder="your-email@mail.com"
-                      className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
-                      onChange={(e) => {
-                        SetEmail(value);
-                      }}
-                    />
+                  <div className="text-left flex flex-col">
+                    Email
+                    <div className="flex">
+                      <FontAwesomeIcon
+                        icon={faEnvelope}
+                        className="border-2 bg-[#F9FAFB]  border-neutral-300 py-4 border-r-0 px-2 rounded-l-md"
+                      />
+                      <input
+                        type="email"
+                        alt="enter your email"
+                        placeholder="your-email@mail.com"
+                        className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
+                        onChange={(e) => {
+                          SetEmail(value);
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="text-left flex flex-col">
-                  Phone Number
-                  <div className="flex">
-                    <FontAwesomeIcon
-                      icon={faPhone}
-                      className="border-2 bg-[#F9FAFB]  border-neutral-300 py-4 border-r-0 px-2 rounded-l-md"
-                    />
-                    <input
-                      type="number"
-                      alt="enter your number"
-                      placeholder="123456789"
-                      className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
-                      onChange={(e) => {
-                        SetPhone(value);
-                      }}
-                    />
+                  <div className="text-left flex flex-col">
+                    Phone Number
+                    <div className="flex">
+                      <FontAwesomeIcon
+                        icon={faPhone}
+                        className="border-2 bg-[#F9FAFB]  border-neutral-300 py-4 border-r-0 px-2 rounded-l-md"
+                      />
+                      <input
+                        type="number"
+                        alt="enter your number"
+                        placeholder="123456789"
+                        className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
+                        onChange={(e) => {
+                          SetPhone(value);
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="flex justify-between text-sm md:text-xl">
-                  <div>
-                    Check Out <br /> <input type="date" alt="check out date" />
+                  <div className="flex justify-between text-sm md:text-xl">
+                    <div>
+                      Check In
+                      <br />{" "}
+                      <input type="date" alt="check in date" value={checkin} />
+                    </div>
+                    <div>
+                      Check Out <br />
+                      <input
+                        type="date"
+                        alt="check out date"
+                        value={checkout}
+                      />
+                    </div>
                   </div>
-                  <div>
-                    Check In
-                    <br /> <input type="date" alt="check in date" />
-                  </div>
-                </div>
-                <button className="w-fit px-6 py-2 self-center text-xl rounded-lg border-2 border-[#87d551] custom-button md:text-3xl">
-                  Book Now
-                </button>
-              </form>
-            </div>}
+                  <button className="w-fit px-6 py-2 self-center text-xl rounded-lg border-2 border-[#87d551] custom-button md:text-3xl">
+                    Book Now
+                  </button>
+                </form>
+              </div>
+            )}
           </div>
         </div>
       )}
