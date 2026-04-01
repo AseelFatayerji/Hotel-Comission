@@ -4,11 +4,12 @@ import {
   faBath,
   faBed,
   faPhone,
+  faUser,
+  faEnvelope,
   faRuler,
   faStar,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -233,14 +234,20 @@ function Booking() {
                   </div>
                   <div className="text-left flex flex-col">
                     Guests
-                    <input
-                      type="number"
-                      min={1}
-                      max={Guests}
-                      value={bookingGuests}
-                      onChange={handleGuestChange}
-                      className="border-2 border-neutral-300 py-1 px-2 rounded-md w-24"
-                    />
+                    <div className="flex">
+                      <FontAwesomeIcon
+                        icon={faUsers}
+                        className="border-2 bg-[#F9FAFB]  border-neutral-300 py-4 border-r-0 px-2 rounded-l-md"
+                      />
+                      <input
+                        type="number"
+                        min={1}
+                        max={Guests}
+                        value={bookingGuests}
+                        onChange={handleGuestChange}
+                        className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
+                      />
+                    </div>
                     {guestError && (
                       <span className="text-red-500 text-sm mt-1">
                         {guestError}
