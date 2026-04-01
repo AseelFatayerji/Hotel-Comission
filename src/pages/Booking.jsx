@@ -105,6 +105,20 @@ function Booking() {
         Source: "Online",
         Archive: false,
       });
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          email: bookingEmail,
+          full_name: bookingName,
+          room_type: room_name,
+          check_in: checkin,
+          check_out: checkout,
+          guests: bookingGuests,
+          cost: totalPrice,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      );
       setPopupStatus("success");
     } catch (err) {
       console.error(err);

@@ -61,7 +61,7 @@ function BookingPopup({ status, onClose }) {
             </p>
             <button
               onClick={onClose}
-              className="px-8 py-2 rounded-lg border-2 border-red-500 text-red-500 text-lg"
+              className="px-8 py-2 rounded-lg border-2 border-red-500 text-red-500 text-lg err-btn"
             >
               Try Again
             </button>

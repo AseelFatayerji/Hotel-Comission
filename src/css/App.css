@@ -1,5 +1,6 @@
 :root {
   --color: #7BC24A;
+  --err: #ff0000
 }
 
 .Poppins {
@@ -102,6 +103,50 @@ select:active {
   background: #19a30c;
   transition: background 0s;
 }
+
+.err-btn {
+  font-family: inherit;
+  display: i5nline-block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.5s;
+  z-index: 1;
+  font-weight: 500;
+  color: black;
+  background-color: white;
+}
+
+.err-btn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--err);
+  height: 200%;
+  width: 200%;
+  border-radius: 50%;
+}
+
+.err-btn:hover {
+  color: #fff;
+}
+
+.err-btn:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.err-btn:hover:before {
+  top: -30px;
+  left: -40px;
+}
+
+.err-btn:active:before {
+  background: #19a30c;
+  transition: background 0s;
+}
+
 
 input {
   color: var(--primary-color);
