@@ -33,7 +33,6 @@ function Booking() {
       if (unsubscribe) {
         unsubscribe();
       }
-      dispatch(clearRooms());
     };
   }, [dispatch]);
 
@@ -51,7 +50,7 @@ function Booking() {
   const [guestError, setGuestError] = useState("");
 
   const extraGuestFee = useMemo(() => {
-    const baseGuests = 2; // base included guests
+    const baseGuests = 3;
     const extra = Math.max(0, bookingGuests - baseGuests);
     return extra * 10;
   }, [bookingGuests]);
@@ -231,10 +230,31 @@ function Booking() {
                       />
                     </div>
                   </div>
+                  <div className="text-left flex flex-col">
+                    Guests
+                    <input
+                      type="number"
+                      min={1}
+                      max={Guests}
+                      value={bookingGuests}
+                      onChange={handleGuestChange}
+                      className="border-2 border-neutral-300 py-1 px-2 rounded-md w-24"
+                    />
+                    {guestError && (
+                      <span className="text-red-500 text-sm mt-1">
+                        {guestError}
+                      </span>
+                    )}
+                    {bookingGuests > 2 && (
+                      <span className="text-orange-500 text-sm mt-1">
+                        +${extraGuestFee} extra guest fee applied
+                      </span>
+                    )}
+                  </div>
                   <div className="flex justify-between text-sm md:text-xl">
                     <div>
                       Check In
-                      <br />{" "}
+                      <br />
                       <input type="date" alt="check in date" value={checkin} />
                     </div>
                     <div>

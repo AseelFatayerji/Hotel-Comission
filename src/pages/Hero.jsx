@@ -18,7 +18,6 @@ function Hero({ isMobile }) {
       if (unsubscribe) {
         unsubscribe();
       }
-      dispatch(clearRooms());
     };
   }, [dispatch]);
 
@@ -112,7 +111,7 @@ function Hero({ isMobile }) {
               type="number"
               min={1}
               max={rooms.find((r) => r.id === name)?.Guests || 1}
-              defaultValue={1}
+              defaultValue={guests || 1}
               className="w-20 text-sm"
               onChange={(e) => setGuests(Number(e.target.value))}
             />

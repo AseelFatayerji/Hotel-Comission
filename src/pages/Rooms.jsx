@@ -17,7 +17,6 @@ function Room({ isMobile }) {
       if (unsubscribe) {
         unsubscribe();
       }
-      dispatch(clearRooms());
     };
   }, [dispatch]);
 
@@ -31,6 +30,7 @@ function Room({ isMobile }) {
   const availableRooms = useMemo(() => {
     return rooms.filter((room) => room.Available === true);
   }, [rooms]);
+
   const reorderedRooms = useMemo(() => {
     if (availableRooms.length < 2) return availableRooms;
     const newRooms = [...availableRooms];
@@ -40,6 +40,7 @@ function Room({ isMobile }) {
     newRooms[newRooms.length - 1] = first;
     return newRooms;
   }, [availableRooms]);
+
   const bentoSpan = (index) => {
     if (index === 0) return "col-span-2 row-span-2";
     if (index === 3) return "col-span-2";
