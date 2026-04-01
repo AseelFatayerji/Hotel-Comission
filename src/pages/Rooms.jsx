@@ -1,8 +1,9 @@
-import RoomCard from "../components/Room_Card";
-import Loadings from "../components/Loadings";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef, useMemo, useEffect } from "react";
+
 import { fetchRooms } from "../Redux/Reducer";
+import RoomCard from "../components/Room_Card";
+import Loadings from "../components/Loadings";
 
 function Room({ isMobile }) {
   const dispatch = useDispatch();

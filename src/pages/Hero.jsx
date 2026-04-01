@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Loadings from "../components/Loadings";
 import { fetchRooms } from "../Redux/Reducer";
+import Loadings from "../components/Loadings";
 
 function Hero({ isMobile }) {
   const navigate = useNavigate();
