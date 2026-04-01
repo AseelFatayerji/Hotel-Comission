@@ -1,3 +1,5 @@
+import Loadings from "./Loadings";
+
 function BookingPopup({ status, onClose }) {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
@@ -13,21 +15,7 @@ function BookingPopup({ status, onClose }) {
 
         {status === "success" && (
           <>
-            <div className="w-16 h-16 rounded-full bg-[#7BC24A] flex items-center justify-center animate-bounce">
-              <svg
-                className="w-8 h-8 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={3}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </div>
+            <Loadings />
             <p className="text-2xl font-bold text-gray-800">
               Booking Confirmed!
             </p>
