@@ -45,7 +45,8 @@ function Booking() {
   const [bookingName, SetName] = useState("");
   const [bookingEmail, SetEmail] = useState("");
   const [bookingNumber, SetPhone] = useState("");
-  const [bookingDateIn, setCheckin] = useState(checkin || 0);
+  const [bookingDateIn, setCheckIn] = useState(checkin || 0);
+  const [bookingDateOut, setCheckOut] = useState(checkout || 0);
   const [bookingGuests, setBookingGuests] = useState(initialGuests || 1);
   const [guestError, setGuestError] = useState("");
 
@@ -255,14 +256,24 @@ function Booking() {
                     <div>
                       Check In
                       <br />
-                      <input type="date" alt="check in date" value={checkin} />
+                      <input
+                        type="date"
+                        alt="check in date"
+                        value={bookingDateIn}
+                        onChange={(e) => {
+                          setCheckIn(e.target.value);
+                        }}
+                      />
                     </div>
                     <div>
                       Check Out <br />
                       <input
                         type="date"
                         alt="check out date"
-                        value={checkout}
+                        value={bookingDateOut}
+                        onChange={(e) => {
+                          setCheckOut(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
