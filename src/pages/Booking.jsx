@@ -68,16 +68,16 @@ function Booking() {
   }, [bookingGuests]);
 
   const nights = useMemo(() => {
-    if (!checkin || !checkout) return 1;
-    const start = new Date(checkin);
-    const end = new Date(checkout);
+    if (!bookingDateIn || !bookingDateOut) return 1;
+    const start = new Date(bookingDateIn);
+    const end = new Date(bookingDateOut);
     const diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
     return diff > 0 ? diff : 1;
-  }, [checkin, checkout]);
-
+  }, [bookingDateIn, bookingDateOut]);
+  
   const totalPrice = useMemo(() => {
-    return (Price + extraGuestFee) * nights;
-  }, [Price, extraGuestFee, nights]);
+    return Price + extraGuestFee;
+  }, [Price, extraGuestFee]);
 
   const handleGuestChange = (e) => {
     const value = Number(e.target.value);
@@ -106,8 +106,8 @@ function Booking() {
         ? new Date(checkout).toLocaleDateString()
         : new Date(bookingDateOut).toLocaleDateString(),
       guests: bookingGuests,
-      cost: totalPrice,
-      total: nights*totalPrice,
+      cost: Price,
+      total: totalPrice * nights,
       phone: bookingNumber,
     };
 
@@ -118,7 +118,7 @@ function Booking() {
         Phone: bookingNumber,
         Guests: bookingGuests,
         Arrived: false,
-        Cost: totalPrice,
+        Cost: totalPrice * nights,
         "Check In": checkin
           ? Timestamp.fromDate(new Date(checkin))
           : Timestamp.fromDate(new Date(bookingDateIn)),
@@ -136,7 +136,6 @@ function Booking() {
         emailParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
-      console.log("Email params:", emailParams);
       setPopupStatus("success");
     } catch (err) {
       console.error(err);
