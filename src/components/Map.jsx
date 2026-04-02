@@ -2,7 +2,7 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { useRef } from "react";
 import Loadings from "./Loadings";
 
-const libraries = ["marker"];
+const libraries = ["marker", "places"];
 
 function Map() {
   const location = { lat: 9.976795, lng: -84.160072 };

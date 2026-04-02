@@ -57,33 +57,13 @@ function Testimonials() {
       <label className="flex text-3xl w-full gap-2 justify-center p-5  md:text-6xl md:gap-5 ">
         What Our <b className="text-[#7BC24A] underline">Guests</b> Say?
       </label>
-      <div className="flex px-4 py-4 overflow-x-auto carousel md:py-18">
-        <div className="group">
-          {tempData.map((reviews, index) => {
-            return (
-              <Testimonial_Card
-                key={index}
-                name={reviews.name}
-                rating={reviews.rating}
-                img={reviews.img}
-                review={reviews.review}
-              />
-            );
-          })}
-        </div>
-        <div aria-hidden className="group">
-          {tempData.map((reviews, index) => {
-            return (
-              <Testimonial_Card
-                key={index}
-                name={reviews.name}
-                rating={reviews.rating}
-                img={reviews.img}
-                review={reviews.review}
-              />
-            );
-          })}
-        </div>
+      <div className="flex px-2 py-4 justify-center md:py-18">
+        {/* <!-- Elfsight Google Reviews | LOP Inn Google Reviews --> */}
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div
+          class="elfsight-app-ffbd4b5b-5c8d-480b-b5ae-36716c50507c"
+          data-elfsight-app-lazy
+        ></div>
       </div>
     </div>
   );
