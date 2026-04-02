@@ -74,7 +74,7 @@ function Booking() {
     const diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
     return diff > 0 ? diff : 1;
   }, [bookingDateIn, bookingDateOut]);
-  
+
   const totalPrice = useMemo(() => {
     return Price + extraGuestFee;
   }, [Price, extraGuestFee]);
@@ -108,7 +108,8 @@ function Booking() {
       guests: bookingGuests,
       cost: Price,
       total: totalPrice * nights,
-      phone: bookingNumber,
+      phone: parseInt(bookingNumber),
+      guest_id:"",
     };
 
     try {
