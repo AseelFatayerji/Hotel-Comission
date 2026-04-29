@@ -22,6 +22,7 @@ import Navbar from "../components/Navbar";
 import Footer from "./Footer";
 import emailjs from "@emailjs/browser";
 import BookingPopup from "../components/BookingPopup";
+import PayementPopup from "../components/PayementPopup";
 
 function Booking() {
   const location = useLocation();
@@ -95,53 +96,6 @@ function Booking() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setPopupStatus("loading");
-    const emailParams = {
-      email: bookingEmail,
-      full_name: bookingName,
-      room_type: room_name,
-      check_in: checkin
-        ? new Date(checkin).toLocaleDateString()
-        : new Date(bookingDateIn).toLocaleDateString(),
-      check_out: checkout
-        ? new Date(checkout).toLocaleDateString()
-        : new Date(bookingDateOut).toLocaleDateString(),
-      guests: bookingGuests,
-      cost: Price,
-      total: totalPrice * nights,
-      phone: parseInt(bookingNumber),
-      guest_id:"",
-    };
-
-    try {
-      await addDoc(collection(booking, "Booking"), {
-        "Full Name": bookingName,
-        Email: bookingEmail,
-        Phone: bookingNumber,
-        Guests: bookingGuests,
-        Arrived: false,
-        Cost: totalPrice * nights,
-        "Check In": checkin
-          ? Timestamp.fromDate(new Date(checkin))
-          : Timestamp.fromDate(new Date(bookingDateIn)),
-        "Check Out": checkout
-          ? Timestamp.fromDate(new Date(checkout))
-          : Timestamp.fromDate(new Date(bookingDateOut)),
-        "Room Number": 0,
-        "Room Type": room_name.split(" ")[0],
-        Source: "Online",
-        Archive: false,
-      });
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        emailParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      );
-      setPopupStatus("success");
-    } catch (err) {
-      console.error(err);
-      setPopupStatus("error");
-    }
   };
   return (
     <>
@@ -371,10 +325,21 @@ function Booking() {
         </div>
       )}
       <Footer />
-      {popupStatus && (
-        <BookingPopup
+      {popupStatus === "loading" && (
+        <PayementPopup
           status={popupStatus}
           onClose={() => setPopupStatus(null)}
+          bookingData={{
+            cost: Price,
+            total: totalPrice * nights,
+            currency: "USD",
+            name: bookingName,
+            phone: bookingNumber,
+            roomType: room_name,
+            checkIn: bookingDateIn,
+            checkOut: bookingDateOut,
+            guests: bookingGuests,
+          }}
         />
       )}
     </>
