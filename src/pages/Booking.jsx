@@ -1,5 +1,3 @@
-import { collection, addDoc, Timestamp } from "firebase/firestore";
-import { booking } from "../firebase";
 import { useLocation, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,8 +18,6 @@ import { fetchRooms } from "../Redux/Reducer";
 
 import Navbar from "../components/Navbar";
 import Footer from "./Footer";
-import emailjs from "@emailjs/browser";
-import BookingPopup from "../components/BookingPopup";
 import PayementPopup from "../components/PayementPopup";
 
 function Booking() {
@@ -331,7 +327,7 @@ function Booking() {
           onClose={() => setPopupStatus(null)}
           bookingData={{
             cost: Price,
-            total: totalPrice * nights,
+            total: 1,
             currency: "USD",
             name: bookingName,
             phone: bookingNumber,

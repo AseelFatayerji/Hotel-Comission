@@ -61,7 +61,7 @@ function Testimonials() {
         {/* <!-- Elfsight Google Reviews | LOP Inn Google Reviews --> */}
         <script src="https://elfsightcdn.com/platform.js" async></script>
         <div
-          class="elfsight-app-ffbd4b5b-5c8d-480b-b5ae-36716c50507c"
+          className="elfsight-app-ffbd4b5b-5c8d-480b-b5ae-36716c50507c"
           data-elfsight-app-lazy
         ></div>
       </div>

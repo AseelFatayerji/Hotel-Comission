@@ -1,13 +1,15 @@
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { booking } from "../firebase";
+import emailjs from "@emailjs/browser";
 import React from "react";
 
 function PayementPopup({ status, onClose, bookingData }) {
   if (!status) return null;
-console.log(bookingData);
   const amount = bookingData.total.toFixed(2) ?? "0.00";
   const currency = bookingData?.currency ?? "USD";
 
-  const handleSubmit = async (e) => {
+  const updateDatabase = async (e) => {
     const emailParams = {
       email: bookingData.bookingEmail,
       full_name: bookingData.bookingName,
@@ -42,7 +44,7 @@ console.log(bookingData);
         emailParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
-      setPopupStatus("success");
+      onClose();
     } catch (err) {
       console.error(err);
       setPopupStatus("error");
@@ -52,9 +54,9 @@ console.log(bookingData);
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white rounded-3xl p-10 flex flex-col items-center gap-6 max-w-sm w-full mx-4 shadow-2xl">
         <h2 className="text-2xl font-bold text-gray-800">Complete Payment</h2>
-        <p className="text-gray-500">
+        <p className="text-gray-500 text-lg">
           Total:{" "}
-          <span className="font-semibold text-[#87d551] text-lg">
+          <span className="font-semibold text-[#6bba33] text-lg">
             ${amount} {currency}
           </span>
         </p>
@@ -86,7 +88,10 @@ console.log(bookingData);
                   ],
                 })
               }
-              onApprove={(data, actions) => actions.order.capture()}
+              onApprove={async (data, actions) => {
+                await actions.order.capture();
+                await updateDatabase();
+              }}
               onCancel={onClose}
             />
           </PayPalScriptProvider>
