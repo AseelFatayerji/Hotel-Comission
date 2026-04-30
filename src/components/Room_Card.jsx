@@ -45,7 +45,7 @@ function RoomCard({ img, name, roominfo, isMobile }) {
         `}
       />
       {!roominfo.Quantity != 0 && (
-        <div className={`absolute inset-0 flex items-center justify-center ${name != "Deluxe Suite" ? "scale-200":""}`}>
+        <div className={`absolute inset-0 flex items-center justify-center ${name != "Superior Suite" ? "scale-150":"scale-250"}`}>
           <div className="-rotate-12 p-4 border-2 rounded-2xl border-red-500/60 bg-red-500/10 backdrop-blur-sm">
             <span className="text-red-400 font-semibold text-lg tracking-widest uppercase">
               Fully Booked
