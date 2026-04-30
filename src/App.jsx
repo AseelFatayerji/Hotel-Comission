@@ -8,6 +8,7 @@ import MainPage from "./pages/MainPage";
 import ScrollToTop from "./components/ScrollReset";
 
 import "./css/App.css";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,13 +18,22 @@ function App() {
   }, []);
   return (
     <>
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/Room/:room_name" element={<Booking />} />
-        </Routes>
-      </Router>
+      <PayPalScriptProvider
+        options={{
+          "client-id": import.meta.env.VITE_PAYPAL_CLIENT_ID,
+          currency: "USD",
+          intent: "capture",
+          components: "buttons",
+        }}
+      >
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/Room/:room_name" element={<Booking />} />
+          </Routes>
+        </Router>
+      </PayPalScriptProvider>
     </>
   );
 }

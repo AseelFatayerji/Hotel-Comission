@@ -59,7 +59,7 @@ function Booking() {
   const [popupStatus, setPopupStatus] = useState(null);
 
   const extraGuestFee = useMemo(() => {
-    const baseGuests = 3;
+    const baseGuests = 2;
     const extra = Math.max(0, bookingGuests - baseGuests);
     return extra * 10;
   }, [bookingGuests]);
@@ -327,8 +327,8 @@ function Booking() {
           onClose={() => setPopupStatus(null)}
           bookingData={{
             cost: Price,
-            total: 1,
-            currency: "USD",
+            total: totalPrice * nights,
+            email: bookingEmail,
             name: bookingName,
             phone: bookingNumber,
             roomType: room_name,
