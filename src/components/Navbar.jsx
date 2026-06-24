@@ -22,7 +22,7 @@ function Navbar() {
           <NavLink to="/#Contact">Contact</NavLink>
         </div>
         <div
-          className={`text-white  rounded-lg py-3 px-1 ${isMobile ? "bg-[#7BC24A]" : "pointer-none text-transparent "}`}
+          className={`  rounded-lg py-3 px-1 ${isMobile ? "bg-[#7BC24A] text-white" : "pointer-none text-transparent "}`}
         >
           {/* <!-- From Uiverse.io by vk-uiux -->  */}
           <div id="menuToggle" className="scale-75">

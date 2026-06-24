@@ -54,13 +54,13 @@ function Hero({ isMobile }) {
           LOP Inn <b className="text-4xl">Land Of Peace</b>
         </div>
         <div
-          className={`bg-white rounded-2xl flex justify-evenly w-fit text-left Poppins text-xl  ${isMobile ? "scale-50 text-lg p-7 gap-5 sm:scale-55 md:scale-85" : "px-15 py-10 gap-10 "}`}
+          className={`bg-white rounded-2xl flex justify-evenly  w-fit text-left Poppins text-lg  ${isMobile ? "scale-45 text-sm p-7 gap-5 sm:scale-55 md:scale-85" : "px-15 py-10 gap-10 "}`}
         >
           <div>
-            Check In
+            Check In - Arrival (Costa Rica) aproximate
             <br />
             <input
-              type="date"
+              type="datetime-local"
               className="text-sm"
               onChange={(e) => {
                 setCheckin(e.target.value);
@@ -70,9 +70,9 @@ function Hero({ isMobile }) {
             />
           </div>
           <div>
-            Check Out <br />
+             Check Out - Departure (Costa Rica) aproximate <br />
             <input
-              type="date"
+              type="datetime-local"
               className="text-sm"
               onChange={(e) => {
                 setCheckout(e.target.value);
@@ -117,7 +117,7 @@ function Hero({ isMobile }) {
             />
           </div>
           <button
-            className="rounded-lg border-2 py-1.5 px-6 border-[#7BC24A] custom-button text-lg md:text-xl"
+            className="rounded-lg w-48 border-2 h-fit py-3 border-[#7BC24A] custom-button text-sm md:text-lg"
             onClick={handleClick}
             aria-label="book now button"
           >

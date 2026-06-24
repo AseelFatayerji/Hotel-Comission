@@ -52,6 +52,7 @@ function Booking() {
   const [bookingDateOut, setCheckOut] = useState(checkout || 0);
 
   const [bookingGuests, setBookingGuests] = useState(initialGuests || 1);
+  const [bookingCountry, setBookingCountry] = useState("");
   const [guestError, setGuestError] = useState("");
 
   const [submitting, setSubmitting] = useState(false);
@@ -282,12 +283,37 @@ function Booking() {
                       </span>
                     )}
                   </div>
-                  <div className="flex justify-between text-sm md:text-xl">
+                  <div className="text-left flex flex-col">
+                    Country
+                    <div className="flex">
+                      <FontAwesomeIcon
+                        icon={faFlag}
+                        className="border-2 bg-[#F9FAFB]  border-neutral-300 py-4 border-r-0 px-2 rounded-l-md"
+                      />
+                      <input
+                        type="text"
+                        value={bookingCountry}
+                        onChange={handleGuestChange}
+                        className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
+                      />
+                    </div>
+                    {guestError && (
+                      <span className="text-red-500 text-sm mt-1">
+                        {guestError}
+                      </span>
+                    )}
+                    {bookingGuests > 2 && (
+                      <span className="text-orange-500 text-sm mt-1">
+                        +${extraGuestFee} extra guest fee applied
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex justify-between gap-10 text-sm md:text-lg">
                     <div>
-                      Check In
+                      Check In - Arrival (Costa Rica) aproximate
                       <br />
                       <input
-                        type="date"
+                        type="datetime-local"
                         alt="check in date"
                         value={bookingDateIn}
                         onChange={(e) => {
@@ -296,9 +322,10 @@ function Booking() {
                       />
                     </div>
                     <div>
-                      Check Out <br />
+                      Check Out - Departure (Costa Rica) aproximate
+                      <br />
                       <input
-                        type="date"
+                        type="datetime-local"
                         alt="check out date"
                         value={bookingDateOut}
                         onChange={(e) => {
@@ -334,6 +361,7 @@ function Booking() {
             roomType: room_name,
             checkIn: bookingDateIn,
             checkOut: bookingDateOut,
+            country: bookingCountry,
             guests: bookingGuests,
           }}
         />
