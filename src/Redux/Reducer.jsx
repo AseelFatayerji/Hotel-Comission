@@ -7,31 +7,37 @@ export const fetchRooms = createAsyncThunk(
   "rooms/fetchRooms",
   async (_, { dispatch }) => {
     const roomsRef = ref(db, "Suites");
-    
-    const unsubscribe = onValue(roomsRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        const roomsArray = Object.entries(data).map(([id, value]) => ({ 
-          id, 
-          ...value 
-        }));
-        dispatch(setRooms(roomsArray));
-      } else {
-        dispatch(setRooms([]));
-      }
-    }, (error) => {
-      dispatch(setError(error.message));
-    });
+
+    const unsubscribe = onValue(
+      roomsRef,
+      (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const roomsArray = Object.entries(data).map(([id, value]) => ({
+            id,
+            ...value,
+          }));
+          dispatch(setRooms(roomsArray));
+        } else {
+          dispatch(setRooms([]));
+        }
+      },
+      (error) => {
+        dispatch(setError(error.message));
+      },
+    );
     return true;
-  }
+  },
 );
 
 const roomsSlice = createSlice({
   name: "rooms",
   initialState: {
+    checkin: "",
+    checkout: "",
     rooms: [],
     status: "idle",
-    error: null
+    error: null,
   },
   reducers: {
     setRooms: (state, action) => {
@@ -46,7 +52,11 @@ const roomsSlice = createSlice({
       state.rooms = [];
       state.status = "idle";
       state.error = null;
-    }
+    },
+    setDates: (state, action) => {
+      state.checkin = action.payload.checkin;
+      state.checkout = action.payload.checkout;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -60,8 +70,8 @@ const roomsSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       });
-  }
+  },
 });
 
-export const { setRooms, setError, clearRooms } = roomsSlice.actions;
+export const { setRooms, setError, clearRooms, setDates } = roomsSlice.actions;
 export default roomsSlice.reducer;

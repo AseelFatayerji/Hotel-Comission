@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef, useMemo, useEffect } from "react";
 
+import { useAvailability } from "../components/AvailabilityCheck";
 import { fetchRooms } from "../Redux/Reducer";
 import RoomCard from "../components/Room_Card";
 import Loadings from "../components/Loadings";
 
 function Room({ isMobile }) {
   const dispatch = useDispatch();
-  const { rooms, status, error, unsubscribe } = useSelector(
+  const { rooms, status, error, unsubscribe, checkin, checkout } = useSelector(
     (state) => state.rooms,
   );
 
   useEffect(() => {
     dispatch(fetchRooms());
-
     return () => {
       if (unsubscribe) {
         unsubscribe();
@@ -25,8 +25,7 @@ function Room({ isMobile }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
 
-  if (status === "loading") return <Loadings />;
-  if (status === "failed") return <p>Error: {error}</p>;
+  const availableQty = useAvailability(checkin, checkout, rooms);
 
   const availableRooms = useMemo(() => {
     return rooms.filter((room) => room.Available === true);
@@ -61,6 +60,9 @@ function Room({ isMobile }) {
     el.scrollTo({ left: index * (el.offsetWidth * 0.8), behavior: "smooth" });
     setActiveIndex(index);
   };
+
+  if (status === "loading") return <Loadings />;
+  if (status === "failed") return <p>Error: {error}</p>;
 
   return (
     <div
@@ -105,6 +107,7 @@ function Room({ isMobile }) {
                   name={room.id}
                   roominfo={room}
                   isMobile={isMobile}
+                  availableQty={availableQty}
                 />
               </div>
             ))}
@@ -147,6 +150,7 @@ function Room({ isMobile }) {
                 name={room.id}
                 roominfo={room}
                 isMobile={isMobile}
+                availableQty={availableQty}
               />
             </div>
           ))}

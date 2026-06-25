@@ -3,21 +3,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function RoomCard({ img, name, roominfo, isMobile }) {
+function RoomCard({ img, name, roominfo, isMobile, availableQty }) {
   const navigate = useNavigate();
-  const [isHovered, setIsHovered] = useState(false);
 
+  const effectiveQty = availableQty?.[name] ?? roominfo.Quantity;
+  const isAvailable = effectiveQty > 0;
+
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => roominfo.Quantity != 0 && navigate(`/Room/${name}`)}
+      onClick={() => isAvailable && navigate(`/Room/${name}`)}
       className={`
         relative rounded-3xl overflow-hidden cursor-pointer
         h-full w-full
         transition-all duration-500 ease-out
         ${
-          roominfo.Quantity != 0
+          isAvailable
             ? `shadow-2xl ${isHovered ? "shadow-[0_20px_60px_-15px_rgba(135,213,81,0.4)]" : "shadow-[10px_7px_12px_2px_rgba(0,0,0,0.2)]"}`
             : "shadow-lg"
         }
@@ -31,7 +34,7 @@ function RoomCard({ img, name, roominfo, isMobile }) {
           absolute inset-0 h-full w-full object-cover
           transition-transform duration-700 ease-out
           ${isHovered ? "scale-110" : "scale-100"}
-          ${!roominfo.Quantity != 0 ? "brightness-50" : ""}
+          ${!isAvailable ? "brightness-50" : ""}
         `}
       />
       <div
@@ -44,16 +47,17 @@ function RoomCard({ img, name, roominfo, isMobile }) {
           }
         `}
       />
-      {!roominfo.Quantity != 0 && (
-        <div className={`absolute inset-0 flex items-center justify-center ${name != "Superior Suite" ? "scale-150":"scale-250"}`}>
+      {!isAvailable ? (
+        <div
+          className={`absolute inset-0 flex items-center justify-center ${name != "Apartment" ? "scale-150 " : "scale-250"}`}
+        >
           <div className="-rotate-12 p-4 border-2 rounded-2xl border-red-500/60 bg-red-500/10 backdrop-blur-sm">
             <span className="text-red-400 font-semibold text-lg tracking-widest uppercase">
               Fully Booked
             </span>
           </div>
         </div>
-      )}
-      {roominfo.Quantity != 0 && (
+      ) : (
         <div className="absolute inset-0 flex flex-col justify-end p-5">
           <div className="absolute top-4 right-4 bg-white/95 backdrop-blur text-gray-900 px-3 py-1 rounded-full text-sm font-medium shadow-md">
             {roominfo.Price} $

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRooms } from "../Redux/Reducer";
+import { fetchRooms, setDates } from "../Redux/Reducer";
+import { useAvailability } from "../components/AvailabilityCheck";
 import Loadings from "../components/Loadings";
 
 function Hero({ isMobile }) {
@@ -10,7 +11,6 @@ function Hero({ isMobile }) {
   const { rooms, status, error, unsubscribe } = useSelector(
     (state) => state.rooms,
   );
-
   useEffect(() => {
     dispatch(fetchRooms());
 
@@ -26,6 +26,8 @@ function Hero({ isMobile }) {
   const [checkout, setCheckout] = useState("");
   const [guests, setGuests] = useState(0);
 
+  const availableQty = useAvailability(checkin, checkout, rooms);
+
   const availableRooms = useMemo(() => {
     return rooms.filter((room) => room.Available === true);
   }, [rooms]);
@@ -36,6 +38,7 @@ function Hero({ isMobile }) {
         checkin,
         checkout,
         guests,
+        availableQty,
       },
     });
   };
@@ -64,18 +67,18 @@ function Hero({ isMobile }) {
               className="text-sm"
               onChange={(e) => {
                 setCheckin(e.target.value);
+                dispatch(setDates({ checkin: e.target.value, checkout }));
               }}
-              alt="check in date"
-              aria-label="Check in date"
             />
           </div>
           <div>
-             Check Out - Departure (Costa Rica) aproximate <br />
+            Check Out - Departure (Costa Rica) aproximate <br />
             <input
               type="datetime-local"
               className="text-sm"
               onChange={(e) => {
                 setCheckout(e.target.value);
+                dispatch(setDates({ checkin, checkout: e.target.value }));
               }}
               alt="check out date"
               aria-label="Check out date"
@@ -86,23 +89,28 @@ function Hero({ isMobile }) {
             <br />
             <select
               className="text-sm"
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
+              onChange={(e) => setName(e.target.value)}
               aria-label="Select room type"
             >
-              {availableRooms.map((room) => {
-                return (
-                  <option
-                    key={room.id}
-                    value={room.id}
-                    disabled={room.Available === false}
-                    label={room.id}
-                  >
-                    {room.id}
-                  </option>
-                );
-              })}
+              {rooms
+                .filter((room) => room.Available === true)
+                .map((room) => {
+                  const qty = availableQty[room.id] ?? room.Quantity;
+                  const soldOut = qty === 0;
+                  return (
+                    <option
+                      key={room.id}
+                      value={room.id}
+                      disabled={soldOut}
+                      style={{
+                        color: soldOut ? "#9ca3af" : "inherit",
+                        fontStyle: soldOut ? "italic" : "normal",
+                      }}
+                    >
+                      {soldOut ? `${room.id} — Sold Out` : room.id}
+                    </option>
+                  );
+                })}
             </select>
           </div>
           <div>
