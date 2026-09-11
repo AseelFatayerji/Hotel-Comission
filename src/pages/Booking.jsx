@@ -19,6 +19,7 @@ import { fetchRooms } from "../Redux/Reducer";
 import Navbar from "../components/Navbar";
 import Footer from "./Footer";
 import PayementPopup from "../components/PayementPopup";
+import { faFlag } from "@fortawesome/free-regular-svg-icons";
 
 function Booking() {
   const location = useLocation();
