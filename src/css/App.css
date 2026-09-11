@@ -17,18 +17,17 @@ nav a {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.8rem;
+  border-radius: 9999px;
+  padding: 0.25rem 1rem;
   letter-spacing: 1.5px;
 }
 
 nav a:hover {
-  background: white;
-  opacity: 0.7;
+  background: #B9DB92;
 }
 
 nav a.active {
-  background: white;
+  background: #B9DB92;
 }
 
 input {
