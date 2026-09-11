@@ -74,7 +74,7 @@ function Room({ isMobile }) {
         }`}
       >
         Four rooms, same quality, different experiences. <br />
-        <b className="text-[#7BC24A] text-2xl">Choose your favorite.</b>
+        <b className="text-green-900 text-2xl">Choose your favorite.</b>
       </label>
 
       {isMobile ? (
@@ -149,7 +149,7 @@ function Room({ isMobile }) {
         </div>
       )}
       
-        <hr class="h-0.5 my-20 mx-10 bg-neutral-400 border-0" />
+        <hr className="h-0.5 my-20 mx-10 bg-neutral-400 border-0" />
     </div>
   );
 }

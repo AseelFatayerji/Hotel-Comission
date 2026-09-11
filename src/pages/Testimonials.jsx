@@ -1,6 +1,6 @@
 import Testimonial_Card from "../components/Testimonial_Card";
 import pfp from "../assets/dumby-data.jpg";
-function Testimonials() {
+function Testimonials({isMobile}) {
   const tempData = [
     {
       rating: 4,
@@ -54,8 +54,15 @@ function Testimonials() {
   ];
   return (
     <div className="w-screen bg-white mt-20 mb-10">
-      <label className="flex text-3xl w-full gap-2 justify-center p-5  md:text-6xl md:gap-5 ">
-        What Our <b className="text-[#7BC24A] underline">Guests</b> Say?
+      <label
+        className={`flex flex-col justify-center font-semibold ${
+          isMobile
+            ? " px-4 py-5 text-sm gap-1 sm:text-xl sm:gap-2"
+            : "pb-5 pl-[10%] text-5xl gap-2"
+        }`}
+      >
+        What Our Guests Say.
+        <p className="text-lg font-light text-green-900 md:text-xl">Reviews</p>
       </label>
       <div className="flex px-2 py-4 justify-center md:py-18">
         {/* <!-- Elfsight Google Reviews | LOP Inn Google Reviews --> */}
