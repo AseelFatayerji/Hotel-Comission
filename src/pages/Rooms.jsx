@@ -65,24 +65,16 @@ function Room({ isMobile }) {
   if (status === "failed") return <p>Error: {error}</p>;
 
   return (
-    <div
-      id="Rooms"
-      className={`w-screen h-fit bg-white py-5 space-y-5 ${
-        isMobile
-          ? "rounded-t-3xl mt-20 sm:mt-24 md:mt-36"
-          : "rounded-t-[3rem] -mt-15"
-      }`}
-    >
+    <div id="Rooms" className={`w-screen h-fit bg-white py-5 space-y-5 pt-20 `}>
       <label
-        className={`flex w-screen justify-center font-semibold capitalize ${
+        className={`flex w-screen justify-center font-semibold flex-col px-4 py-5 ${
           isMobile
-            ? "py-5 text-md gap-1 sm:text-3xl sm:gap-2"
+            ? "text-sm gap-1 sm:text-xl sm:gap-2"
             : "pb-16 pt-10 text-5xl gap-2"
         }`}
       >
-        Where
-        <b className="text-[#7BC24A] underline"> comfort meets </b> rest and
-        productivity.
+        Four rooms, same quality, different experiences. <br />
+        <b className="text-[#7BC24A] text-2xl">Choose your favorite.</b>
       </label>
 
       {isMobile ? (

@@ -23,14 +23,14 @@ function MainPage() {
       <div className="section1">
         <Hero isMobile={isMobile}/>
       </div>
-      <div className="cover-wrapper bg-white rounded-t-[3rem] -mt-[15vh]">
-        <div className="section2 z-1">
+      <div className="cover-wrapper bg-white">
+        <div className="section2">
           <Room isMobile={isMobile}/>
         </div>
-        <div className="section3 z-2 overflow-hidden">
+        <div className="section3 overflow-hidden">
           <Testimonials isMobile={isMobile}/>
         </div>
-        <div className="section4 z-3">
+        <div className="section4 ">
           <Contact isMobile={isMobile}/>
           <Footer />
         </div>

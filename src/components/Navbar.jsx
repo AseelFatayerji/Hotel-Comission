@@ -13,7 +13,7 @@ function Navbar() {
           <img
             src="https://ik.imagekit.io/sas2seqly/LopInn/logo.png?updatedAt=1773022427960"
             alt="Land Of Peace"
-            className="w-15 h-15 md:w-20 md:h-20"
+            className="w-10 h-10 md:w-15 md:h-15"
           />
         </div>
         <div className="bg-[#7BC24A] backdrop-blur-sm  h-fit px-1 py-2 text-sm rounded-full justify-evenly gap-1 hidden font-bold md:text-lg md:px-4 md:gap-10 md:flex">
