@@ -8,7 +8,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header>
-      <nav className="flex justify-between items-center w-screen px-4 py-3 select-none fixed top-0 left-0 z-10">
+      <nav className="flex justify-between items-center w-screen px-4 py-3 select-none fixed top-0 left-0 z-20">
         <div className="">
           <img
             src="https://ik.imagekit.io/sas2seqly/LopInn/logo.png?updatedAt=1773022427960"

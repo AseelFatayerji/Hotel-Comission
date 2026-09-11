@@ -59,12 +59,12 @@ function RoomCard({ img, name, roominfo, isMobile, availableQty }) {
         </div>
       ) : (
         <div className="absolute inset-0 flex flex-col justify-end p-5">
-          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur text-gray-900 px-3 py-1 rounded-full text-sm font-medium shadow-md">
+          <div className="absolute top-4 right-4 bg-white/95 backdrop-blur text-gray-900 px-3 py-1 rounded-full text-lg font-medium shadow-md">
             {roominfo.Price} $
             <span className="font-normal text-gray-500">/night</span>
           </div>
 
-          <h3 className="text-white text-xl font-semibold mb-3 relative inline-block w-fit">
+          <h3 className="text-white text-xl font-semibold relative inline-block w-fit">
             {name}
             <span
               className={`
@@ -82,7 +82,7 @@ function RoomCard({ img, name, roominfo, isMobile, availableQty }) {
             `}
           >
             <button
-              className="flex items-center rounded-full border-2 py-1.5 px-2 gap-2 border-[#7BC24A] custom-button "
+              className="flex items-center rounded-full border-2 py-1.5 px-2 gap-2   custom-button "
               onClick={(e) => {
                 e.stopPropagation();
                 navigate(`/Room/${name}`);

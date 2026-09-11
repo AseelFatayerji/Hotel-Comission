@@ -21,17 +21,17 @@ function MainPage() {
     <>
       <Navbar />
       <div className="section1">
-        <Hero isMobile={isMobile}/>
+        <Hero isMobile={isMobile} />
       </div>
-      <div className="cover-wrapper bg-white">
+      <div className="cover-wrapper bg-white ">
         <div className="section2">
-          <Room isMobile={isMobile}/>
+          <Room isMobile={isMobile} />
         </div>
         <div className="section3 overflow-hidden">
-          <Testimonials isMobile={isMobile}/>
+          <Testimonials isMobile={isMobile} />
         </div>
         <div className="section4 ">
-          <Contact isMobile={isMobile}/>
+          <Contact isMobile={isMobile} />
           <Footer />
         </div>
       </div>

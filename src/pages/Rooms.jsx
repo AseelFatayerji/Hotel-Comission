@@ -67,10 +67,10 @@ function Room({ isMobile }) {
   return (
     <div id="Rooms" className={`w-screen h-fit bg-white py-5 space-y-5 pt-20 `}>
       <label
-        className={`flex w-screen justify-center font-semibold flex-col px-4 py-5 ${
+        className={`flex w-screen justify-center font-semibold flex-col ${
           isMobile
-            ? "text-sm gap-1 sm:text-xl sm:gap-2"
-            : "pb-16 pt-10 text-5xl gap-2"
+            ? " px-4 py-5 text-sm gap-1 sm:text-xl sm:gap-2"
+            : "pb-5 pl-[10%] pt-20 text-5xl gap-2"
         }`}
       >
         Four rooms, same quality, different experiences. <br />
@@ -119,7 +119,7 @@ function Room({ isMobile }) {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-4 grid-rows-2 gap-4 px-8 max-w-7xl mx-auto h-150">
+        <div className="grid grid-cols-4 grid-rows-2 gap-4 px-8 max-w-7xl mx-auto h-130">
           {reorderedRooms.map((room, index) => (
             <div
               key={room.id}
@@ -148,6 +148,8 @@ function Room({ isMobile }) {
           ))}
         </div>
       )}
+      
+        <hr class="h-0.5 my-20 mx-10 bg-neutral-400 border-0" />
     </div>
   );
 }
