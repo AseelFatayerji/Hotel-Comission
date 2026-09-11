@@ -18,7 +18,7 @@ function Map() {
 
   return (
     <GoogleMap
-      mapContainerClassName="rounded-2xl w-full h-[30rem]"
+      mapContainerClassName="rounded-2xl w-full h-[37rem]"
       center={location}
       zoom={20}
       onLoad={(map) => {

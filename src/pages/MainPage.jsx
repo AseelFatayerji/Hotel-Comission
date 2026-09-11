@@ -32,7 +32,7 @@ function MainPage() {
         </div>
         <div className="section4 ">
           <Contact isMobile={isMobile} />
-          <Footer />
+          <div className="bg-[#3B5388]"><Footer /></div>
         </div>
       </div>
     </>
