@@ -40,7 +40,10 @@ function Booking() {
     };
   }, [dispatch]);
 
-  const { room_name } = useParams();
+  const { room_name: rawRoomName } = useParams();
+  // Decode URL-encoded room name (e.g. "Standard%20Suite" -> "Standard Suite")
+  // so it matches room.id even after a page refresh.
+  const room_name = decodeURIComponent(rawRoomName || "");
   const { checkin, checkout, guests: initialGuests } = location.state || {};
 
   const { img, Price, Disc, Size, Baths, Beds, Guests, Req } =
@@ -91,6 +94,11 @@ function Booking() {
       setGuestError("");
     }
   };
+
+  const handleCountryChange = (e) => {
+    setBookingCountry(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setPopupStatus("loading");
@@ -294,20 +302,10 @@ function Booking() {
                       <input
                         type="text"
                         value={bookingCountry}
-                        onChange={handleGuestChange}
+                        onChange={handleCountryChange}
                         className="border-2 border-neutral-403 py-1 px-2 rounded-r-md grow w-full"
                       />
                     </div>
-                    {guestError && (
-                      <span className="text-red-500 text-sm mt-1">
-                        {guestError}
-                      </span>
-                    )}
-                    {bookingGuests > 2 && (
-                      <span className="text-orange-500 text-sm mt-1">
-                        +${extraGuestFee} extra guest fee applied
-                      </span>
-                    )}
                   </div>
                   <div className="flex justify-between gap-10 text-sm md:text-lg">
                     <div>
