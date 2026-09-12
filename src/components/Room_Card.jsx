@@ -1,4 +1,4 @@
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import {  faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -64,7 +64,7 @@ function RoomCard({ img, name, roominfo, isMobile, availableQty }) {
             <span className="font-normal text-gray-500">/night</span>
           </div>
 
-          <h3 className="text-white text-xl font-semibold relative inline-block w-fit">
+          <h3 className="text-white text-xl py-3 font-semibold relative inline-block w-fit">
             {name}
             <span
               className={`
@@ -82,14 +82,14 @@ function RoomCard({ img, name, roominfo, isMobile, availableQty }) {
             `}
           >
             <button
-              className="flex items-center rounded-full border-2 py-1.5 px-2 gap-2   custom-button "
+              className="flex items-center text-sm rounded-full border-2 p-2 gap-2   custom-button "
               onClick={(e) => {
                 e.stopPropagation();
                 navigate(`/Room/${name}`);
               }}
             >
               View Details
-              <FontAwesomeIcon icon={faArrowUp} className="rotate-45 text-sm" />
+              <FontAwesomeIcon icon={faArrowRight} className=" " />
             </button>
           </div>
         </div>
