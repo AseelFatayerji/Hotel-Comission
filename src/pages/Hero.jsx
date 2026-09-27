@@ -21,7 +21,7 @@ function Hero({ isMobile }) {
     };
   }, [dispatch]);
 
-  const [name, setName] = useState("Standard");
+  const [name, setName] = useState("Double Suite");
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
   const [guests, setGuests] = useState(0);
@@ -42,7 +42,7 @@ function Hero({ isMobile }) {
       },
     });
   };
-
+  
   if (status === "loading") return <Loadings />;
   if (status === "failed") return <p>Error: {error}</p>;
 
@@ -51,7 +51,9 @@ function Hero({ isMobile }) {
       <div
         className={`bg-black/30 w-screen px-10 items-center flex flex-col shadow-2xl ${isMobile ? "h-fit py-20 " : "justify-center h-170 py-10]"}`}
       >
-        <div className={`flex flex-col ${isMobile ? "gap-5" : "ml-[15%] gap-10"}`}>
+        <div
+          className={`flex flex-col ${isMobile ? "gap-5" : "ml-[15%] gap-10"}`}
+        >
           <div
             className={`flex flex-col w-[55%] text-white text-wrap font-medium  ${isMobile ? "text-5xl py-10 " : "align-left text-7xl"}`}
           >
