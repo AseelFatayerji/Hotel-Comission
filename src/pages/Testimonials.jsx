@@ -1,6 +1,6 @@
 import Testimonial_Card from "../components/Testimonial_Card";
 import pfp from "../assets/dumby-data.jpg";
-function Testimonials({isMobile}) {
+function Testimonials({ isMobile }) {
   const tempData = [
     {
       rating: 4,
@@ -64,13 +64,9 @@ function Testimonials({isMobile}) {
         What Our Guests Say.
         <p className="text-lg font-light text-green-900 md:text-xl">Reviews</p>
       </label>
-      <div className="flex px-2 py-4 justify-center md:py-18">
-        {/* <!-- Elfsight Google Reviews | LOP Inn Google Reviews --> */}
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div
-          className="elfsight-app-ffbd4b5b-5c8d-480b-b5ae-36716c50507c"
-          data-elfsight-app-lazy
-        ></div>
+      <div className="flex p-2 justify-center">
+        <div class="sk-ww-google-reviews" data-embed-id="25723891"></div>
+
       </div>
     </div>
   );
